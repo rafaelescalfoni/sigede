@@ -19,5 +19,9 @@ public class DoController {
 	public void Do(String msg) {
 		result.include("mensagemErro", msg);
 	}
+	
+	@Get("/do/cadastrar_do")
+	public void cadastrar_do() {
+	}
 
 }

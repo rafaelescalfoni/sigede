@@ -20,8 +20,8 @@ public class TcuController {
 		result.include("mensagemErro", msg);
 	}
 	
-	@Get("/tcu/cadastrartcu")
-	public void cadastrartcu() {
+	@Get("/tcu/cadastrar_tcu")
+	public void cadastrar_tcu() {
 	}
 	
 }

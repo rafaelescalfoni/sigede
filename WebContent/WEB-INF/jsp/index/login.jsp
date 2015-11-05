@@ -5,15 +5,15 @@
 <html lang="pt-br">
 	<head>
 	    <meta charset="utf-8">
-	    <title>SIGEDE</title>
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <link href="css/bootstrap.css" rel="stylesheet">
-	    <script src="js/.js"></script>
-	    <script src="js/bootstrap.min.js"></script>
-	    <script src="js/jquery.js"></script>
-	    <script src="js/bootstrap.min.js"></script>
-	    <script src="js/bootstrap.js"></script>
-	    <script src="js/bootstrap-confirmation.js" type="text/javascript"></script>
+		<title>SIGEDE</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="<c:url value="/css/bootstrap.css"/>" rel="stylesheet">
+		<script src="<c:url value="/js/.js"/>"></script>
+		<script src="<c:url value="/js/bootstrap.min.js"/>"></script>
+		<script src="<c:url value="/js/jquery.js"/>"></script>
+		<script src="<c:url value="/js/bootstrap.min.js"/>"></script>
+		<script src="<c:url value="/js/bootstrap.js"/>"></script>
+		<script src="<c:url value="/js/bootstrap-confirmation.js"/>" type="text/javascript"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -33,7 +33,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<div class="panel-title text-center">
-							<a><img src="img/SIGEDE-LOGIN.png" alt=""></a>
+							<a><img src="<c:url value="/img/SIGEDE-LOGIN.png"/>" alt=""></a>
 						</div>
 					</div>
 					<div class="panel-body">
@@ -47,26 +47,26 @@
 	
 						<!-- <form name="form" id="form" class="form-horizontal" enctype="multipart/form-data" method="POST"> -->
 	
-						<form name="form" id="form" class="form-horizontal"
-							enctype="multipart/form-data"
+						<form name="form" id="form" class="form-horizontal" enctype="multipart/form-data"
 							action="<c:url value="/autenticar"/>" method="post" role="form">
 							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="glyphicon glyphicon-user"></i></span> <input id="login"
-									type="text" class="form-control" name="usuario.email"
-									placeholder="Email" required autofocus>
+								<span class="input-group-addon">
+									<i class="glyphicon glyphicon-user"></i>
+								</span>
+								<input id="login" type="text" class="form-control" name="usuario.email" placeholder="Email" required autofocus>
 							</div>
 							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="glyphicon glyphicon-lock"></i></span> <input id="senha"
-									type="password" class="form-control" name="usuario.senha"
-									placeholder="Senha" required>
+								<span class="input-group-addon">
+									<i class="glyphicon glyphicon-lock"></i>
+								</span>
+								<input id="senha" type="password" class="form-control" name="usuario.senha" placeholder="Senha" required>
 							</div>
 							<div class="form-group">
 								<!-- Button -->
 								<div class="col-sm-12 controls">
 									<button type="submit" class="btn btn-lg btn-primary btn-block">
-										<i class="glyphicon glyphicon-log-in"></i> ENTRAR
+										<i class="glyphicon glyphicon-log-in"></i>
+										ENTRAR
 									</button>
 								</div>
 							</div>

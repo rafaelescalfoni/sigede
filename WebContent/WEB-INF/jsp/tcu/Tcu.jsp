@@ -4,44 +4,21 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="utf-8">
-    <title>SIGEDE</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../css/bootstrap.css" rel="stylesheet">
-    <script src="../js/.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/jquery.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    <script src="../js/bootstrap-confirmation.js" type="text/javascript"></script>
-</head>
+	<head>
+	    <meta charset="utf-8">
+		<title>SIGEDE</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="<c:url value="/css/bootstrap.css"/>" rel="stylesheet">
+		<script src="<c:url value="/js/.js"/>"></script>
+		<script src="<c:url value="/js/bootstrap.min.js"/>"></script>
+		<script src="<c:url value="/js/jquery.js"/>"></script>
+		<script src="<c:url value="/js/bootstrap.min.js"/>"></script>
+		<script src="<c:url value="/js/bootstrap.js"/>"></script>
+		<script src="<c:url value="/js/bootstrap-confirmation.js"/>" type="text/javascript"></script>
+	</head>
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-          <li><a href="home.jsp"><img src="../img/SIGEDE.png" alt=""></a></li>
-        <li class="active"><a href="<c:url value="/audin/audinfiocruz"/>">DEMANDAS</a></li>
-        <li>
-          <a href="#">RELATÓRIOS </a>
-        </li>
-        <li><a href="#">SUPORTE</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+
+<c:import url="../jspf/cabecalho.jsp"></c:import>
 
 
 <div class="container"> 
@@ -62,8 +39,12 @@
                             <div class="tab-content"> 
                         <br>
                        <div class="form-group">
-                       
-                           <a href="<c:url value="/tcu/cadastrartcu"/>" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> CADASTRAR DEMANDA</a>
+                       		<c:if test="${userSession.usuario.perfil eq 'Usuário Avançado' }">
+                       			<a href="<c:url value="/tcu/cadastrar_tcu"/>" class="btn btn-success">
+                       				<i class="glyphicon glyphicon-plus"></i>
+                       				 CADASTRAR DEMANDA
+                       			</a>
+                       		</c:if>
                            <br>
                        </div>
                 

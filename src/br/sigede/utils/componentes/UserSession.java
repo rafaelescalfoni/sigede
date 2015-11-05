@@ -33,5 +33,6 @@ public class UserSession implements Serializable {
 	public String toString() {
 		return "UserSession [usuario.id=" + usuario + "]";
 	}
+	
 }
 

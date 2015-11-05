@@ -8,9 +8,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import br.sigede.model.Area;
+import br.sigede.model.Status;
 
 @Entity
 @Table(name = "usuario")
@@ -21,9 +26,7 @@ import javax.persistence.Table;
     @NamedQuery(name = "Usuario.findByNome", query = "SELECT u FROM Usuario u WHERE u.nome = :nome"),
     @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email"),
     @NamedQuery(name = "Usuario.findBySenha", query = "SELECT u FROM Usuario u WHERE u.senha = :senha"),
-    @NamedQuery(name = "Usuario.findByTelefone", query = "SELECT u FROM Usuario u WHERE u.telefone = :telefone"),
-    @NamedQuery(name = "Usuario.findByArea", query = "SELECT u FROM Usuario u WHERE u.area = :area"),
-    @NamedQuery(name = "Usuario.findByStatus", query = "SELECT u FROM Usuario u WHERE u.status = :status")})
+    @NamedQuery(name = "Usuario.findByTelefone", query = "SELECT u FROM Usuario u WHERE u.telefone = :telefone")})
 public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,12 +43,14 @@ public class Usuario implements Serializable {
     private String senha;
     @Column(name = "telefone")
     private String telefone;
-    @Column(name = "area")
-    private String area;
+    @JoinColumn(name = "area_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Area area;
     @Column(name = "perfil", length=50)
     private String perfil;
-    @Column(name = "status")
-    private String status;
+    @JoinColumn(name = "status_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Status status;
     
 
     public Usuario() {
@@ -109,12 +114,12 @@ public class Usuario implements Serializable {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-
-	public String getArea() {
+		
+	public Area getArea() {
 		return area;
 	}
 
-	public void setArea(String area) {
+	public void setArea(Area area) {
 		this.area = area;
 	}
 
@@ -126,11 +131,11 @@ public class Usuario implements Serializable {
 		this.perfil = perfil;
 	}
 
-    public String getStatus() {
+    public Status getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 

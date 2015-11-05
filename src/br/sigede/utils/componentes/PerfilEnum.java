@@ -9,7 +9,9 @@ import java.util.TreeMap;
 public enum PerfilEnum {
 
 	ADMINISTRADOR("Administrador"), 
-	USUARIO("Usuário");
+	USUARIOAVANCADO("Usuário Avançado"),
+	USUARIOBASICO("Usuário Básico");
+	
 	
 	private String perfil;
 	

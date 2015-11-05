@@ -22,12 +22,12 @@ public class LoginInterceptor implements Interceptor {
 	}
 
 	/**
-	 * Decide se vai ou n�o interceptar a requisi��o atual.
+	 * Decide se vai ou nao interceptar a requisicao atual.
 	 *  
-	 * @param method: representa qual � o m�todo java que ser� executado na requisi��o, o m�todo do  
-	 *         			seu controller. Com esse objeto voc� tem acesso � classe do controller e ao  
-	 *         			m�todo java dele (java.reflect.Method) para poder, por exemplo, ver qual �
-	 *         			o nome do m�todo, ou se ele tem alguma anota��o
+	 * @param method: representa qual e o metodo java que sera executado na requisicao, o metodo do  
+	 *         			seu controller. Com esse objeto voce tem acesso a classe do controller e ao  
+	 *         			metodo java dele (java.reflect.Method) para poder, por exemplo, ver qual e
+	 *         			o nome do metodo, ou se ele tem alguma anotacao
 	 */
 	public boolean accepts(ResourceMethod method) {
 		//return !userSession.isLogged() ;
@@ -48,11 +48,11 @@ public class LoginInterceptor implements Interceptor {
 	}
 
 	/**
-	 * Intercepta a requisi��o. 
-	 * @param stack: possibilita continuar a execu��o normal da requisi��o e, portanto, executar de 
-	 *					fato a l�gica de neg�cios. 
-	 * @param method: representa qual � o m�todo java que ser� executado na requisi��o
-	 * @param resourceInstance: � o controller instanciado.
+	 * Intercepta a requisicao. 
+	 * @param stack: possibilita continuar a execucao normal da requisicao e, portanto, executar de 
+	 *					fato a logica de negocios. 
+	 * @param method: representa qual e o metodo java que sera executado na requisicao
+	 * @param resourceInstance: e o controller instanciado.
 	 */
 	public void intercept(InterceptorStack stack, 
 							ResourceMethod method, 

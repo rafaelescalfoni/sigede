@@ -11,6 +11,8 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.sigede.dao.DAOFactory;
+import br.sigede.model.Area;
+import br.sigede.model.Status;
 import br.sigede.model.Usuario;
 import br.sigede.utils.anotacoes.Public;
 import br.sigede.utils.componentes.PerfilEnum;
@@ -57,29 +59,43 @@ public class IndexController {
 		params.put("senha", usuario.getSenha());
 
 		usuario = daoFactory.getUsuarioDAO().get(strQuery, params);
-
+		
 		if (usuario != null) {
 			userSession.setUsuario(usuario);
 			result.redirectTo(this).home();
 		} else {
-			result.redirectTo(this).login("Usuï¿½rio invï¿½lido");
+			result.redirectTo(this).login("Usuário inválido");
 		}
 	}
 
 	private void initBanco() {
-		// verificar se o bd estÃ¡ vazio
+		// verificar se o BD está vazio
 		List<Usuario> usuarioList = daoFactory.getUsuarioDAO().list();
-		// se estiver, criar um usuario padrÃ£o
+		// se estiver, criar um usuário padrão
 		if (usuarioList == null || usuarioList.size() == 0) {
+			Area areaPadrao = new Area();
+			areaPadrao.setNome("Coordenação de Gestão de Tecnologia da Informação - CGTI");
+			daoFactory.getAreaDAO().add(areaPadrao);
+			
+			Status statusPadrao = new Status();
+			statusPadrao.setNome("Ativo");
+			daoFactory.getStatusDAO().add(statusPadrao);
+			
 			Usuario usuarioPadrao = new Usuario();
-			usuarioPadrao.setNome("PadrÃ£o");
-			usuarioPadrao.setData_cadastro(new Date()); // retorna hora do
-			usuarioPadrao.setArea("PadrÃ£o");
-			usuarioPadrao.setPerfil(PerfilEnum.ADMINISTRADOR.getNome());
+			usuarioPadrao.setData_cadastro(new Date()); // retorna a data e a hora atual
+			usuarioPadrao.setNome("Usuário Padrão");
+			usuarioPadrao.setEmail("admin@admin.com.br");
 			usuarioPadrao.setSenha("admin");
-			usuarioPadrao.setEmail("admin@admin.com");
 			usuarioPadrao.setTelefone("(21)2222-2222");
+			usuarioPadrao.setArea(areaPadrao);
+			usuarioPadrao.setPerfil(PerfilEnum.ADMINISTRADOR.getNome());
+			usuarioPadrao.setStatus(statusPadrao);
 			daoFactory.getUsuarioDAO().add(usuarioPadrao);
 		}
 	}
+	
+	
+
+	
+	
 }
