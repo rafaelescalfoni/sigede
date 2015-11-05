@@ -10,21 +10,21 @@ import br.sigede.utils.componentes.UserSession;
 
 
 @Resource
-public class AudinFiocruzController {
+public class AudinFioCruzController {
 	//objetos que serao injetados automaticamente pelo vraptor
 	// (para isto, as classes devem estar anotadas com @Component)
 	private final Result result;
 	private final UserSession userSession;
 	private final DAOFactory daoFactory;
 	
-	public AudinFiocruzController(Result result, UserSession userSession, DAOFactory daoFactory) {
+	public AudinFioCruzController(Result result, UserSession userSession, DAOFactory daoFactory) {
 		this.result = result;
 		this.userSession = userSession;
 		this.daoFactory = daoFactory;
 	}
 	
 	//////////////////////////////////////////////////////////////////
-	//metodos de chamadas de página da demanda da audin
+	//metodos de chamadas de pï¿½gina da demanda da audin
 	//////////////////////////////////////////////////////////////////
 	@Get @Path("/demandas/audinfiocruz")
 	public void audinfiocruzCrud(){
