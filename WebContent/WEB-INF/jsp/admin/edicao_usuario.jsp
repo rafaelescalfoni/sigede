@@ -49,7 +49,9 @@
 	                                    		<label for="data_cadastro">Data de Cadastro</label>
 	                            			</div> 
 	                            			<div class="control-label">
-	                                    		<input type="text" id="cal01" class="form-controln" name="usuario.data_cadastro" value="${usuario.data_cadastro }">
+	                                    		<input type="text" id="data_cadastro" class="form-controln" 
+	                                    			name="usuario.data_cadastro" 
+	                                    			value="${usuario.data_cadastro }">
 	                                  		</div>
 	                        			</div>
 	                        			<div class="form-group">

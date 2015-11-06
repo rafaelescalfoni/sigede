@@ -31,7 +31,7 @@
 	                       			<div class="form-group">
 	                           			<a href="<c:url value="/admin/suporte/areatematica"/>" class="btn btn-warning btn-large">
 	                           				<i class="glyphicon glyphicon-chevron-left"></i>
-	                           				CANCELAR
+	                           				 CANCELAR
 	                           			</a>
 	                           			<br>
 	                       			</div>
@@ -39,7 +39,9 @@
 	                        	<div class="tab-content2">
 	                    			<h4>CADASTRO DA ÁREA TEMÁTICA</h4>
 	                    		</div>
-	                      		<form class="form-inline" role="form" action="<c:url value="/suporte/areatematica"/>" method="post">
+	                      		<form class="form-inline" role="form" 
+	                      			action="<c:url value="/suporte/areatematica"/>" 
+	                      			method="post">
 	                            	<!-- Select Basic -->
 	                             	<div class="tab-content3">
 	                        			<div class="form-group">

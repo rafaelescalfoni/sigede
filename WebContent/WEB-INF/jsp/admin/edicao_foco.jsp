@@ -39,7 +39,7 @@
 	                        	<div class="tab-content2">
 	                    			<h4>CADASTRO DO FOCO DA AUDITORIA</h4>
 	                    		</div>
-	                      		<form class="form-inline" role="form" action="<c:url value="/suporte/foco/{foco.id}"/>" method="post">
+	                      		<form class="form-inline" role="form" action="<c:url value="/suporte/foco/${foco.id}"/>" method="post">
 	                            	<!-- Select Basic -->
 	                             	<div class="tab-content3">
 	                        			<div class="form-group">
@@ -53,11 +53,11 @@
 	                                 	<br><br>
 	                                 	<div class="form-group">
 	                                		<div class="control-label">
-	                                			<button type="submit" id="consulta-busca" name="consulta-busca" class="btn btn-success" value="Gravar">
+	                                			<button type="submit" id="editar" name="_method" class="btn btn-success" value="PUT">
 	                                				<span class="glyphicon glyphicon-ok"></span>
 	                                				GRAVAR
 	                                			</button>
-	                                			<button type="button" id="excluir" name="consulta-busca" class="btn btn-danger">
+	                                			<button type="submit" id="excluir" name="_method" class="btn btn-danger" value="DELETE">
 	                                				<span class="glyphicon glyphicon-remove"></span>
 	                                				EXCLUIR
 	                                			</button>

@@ -30,7 +30,7 @@
 							<div class="tab-content">
 								<br>
 								<div class="form-group">
-									<c:if test="${userSession.usuario.perfil eq 'Usuário Avançado' }">
+									<c:if test="${userSession.usuario.perfil eq 'Usuário Avançado'}">
 										<a href="<c:url value="/audinfiocruz/cadastrar_audinfiocruz"/>" class="btn btn-success">
 											<i class="glyphicon glyphicon-plus"></i>
 											 CADASTRAR DEMANDA

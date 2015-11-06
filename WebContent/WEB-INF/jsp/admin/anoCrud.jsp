@@ -35,7 +35,7 @@
 									</div>
 								</div>
 								<div class="tab-content2">
-									<h4>CONSULTA POR ANOS</h4>
+									<h4>CONSULTA POR ANO</h4>
 								</div>
 								<form class="form-inline" role="form">
 									<!-- Select Basic -->

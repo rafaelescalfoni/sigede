@@ -23,7 +23,7 @@ public class TipoRelatorioAudinController {
 					
 	@Get("/suporte/tiporelatorioaudin/{tiporelatorioaudinId}")
 	public void cadastrar_tiporelatorioaudin(Long tiporelatorioaudinId) {
-		TipoRelatorioAudin tipoRelatorioAudin = daoFactory.getTipoRelatorioAudinDAO().get(tiporelatorioaudinId); //pesquisar o tipo de relatorio da audin no bd
-		result.include("tiporelatorioaudin", tipoRelatorioAudin); //botar o tipo de relatorio da audin a disposicao da jsp
+		TipoRelatorioAudin tiporelatorioaudin = daoFactory.getTipoRelatorioAudinDAO().get(tiporelatorioaudinId); //pesquisar o tipo de relatorio da audin no bd
+		result.include("tiporelatorioaudin", tiporelatorioaudin); //botar o tipo de relatorio da audin a disposicao da jsp
 	}
 }

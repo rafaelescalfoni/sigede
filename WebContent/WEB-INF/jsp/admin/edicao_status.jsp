@@ -60,7 +60,7 @@
 	                                				<span class="glyphicon glyphicon-ok"></span>
 	                                				GRAVAR
 	                                			</button>
-	                                			<button type="button" id="excluir" name="_method" 
+	                                			<button type="submit" id="excluir" name="_method" 
 	                                				class="btn btn-danger" value="DELETE">
 	                                				<span class="glyphicon glyphicon-remove"></span>
 	                                				EXCLUIR

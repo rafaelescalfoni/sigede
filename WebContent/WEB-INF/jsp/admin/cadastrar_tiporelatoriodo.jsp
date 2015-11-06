@@ -46,10 +46,10 @@
 	                             	<div class="tab-content3">
 	                        			<div class="form-group">
 	                            			<div class="control-label">
-	                                    		<label for="tipoRelatorioDo.nome">Nome</label>
+	                                    		<label for="tiporelatoriodo.nome">Nome</label>
 	                            			</div> 
 	                            			<div class="control-label">
-	                                    		<input type="text" class="form-controln" name="tipoRelatorioDo.nome">
+	                                    		<input type="text" class="form-controln" name="tiporelatoriodo.nome">
 	                                  		</div>
 	                        			</div>
 	                                 	<br><br>

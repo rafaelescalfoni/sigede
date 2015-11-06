@@ -31,7 +31,7 @@
 	                       			<div class="form-group">
 	                           			<a href="<c:url value="/admin/suporte/area"/>" class="btn btn-warning btn-large">
 	                           				<i class="glyphicon glyphicon-chevron-left"></i>
-	                           				CANCELAR
+	                           				 CANCELAR
 	                           			</a>
 	                           			<br>
 	                       			</div>
@@ -55,13 +55,13 @@
 	                                 	<br><br>
 	                                 	<div class="form-group">
 	                                		<div class="control-label">
-	                                			<button type="submit" id="consulta-busca" name="_method"
+	                                			<button type="submit" id="editar" name="_method"
 	                                				class="btn btn-success" value="PUT">
 	                                				<span class="glyphicon glyphicon-ok"></span>
 	                                				GRAVAR
 	                                			</button>
 	                                			<button type="submit" id="excluir" name="_method" 
-	                                				class="btn btn-danger" value="Delete">
+	                                				class="btn btn-danger" value="DELETE">
 	                                				<span class="glyphicon glyphicon-remove"></span>
 	                                				EXCLUIR
 	                                			</button>

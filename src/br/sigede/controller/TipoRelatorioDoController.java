@@ -23,7 +23,7 @@ public class TipoRelatorioDoController {
 			
 	@Get("/suporte/tiporelatoriodo/{tiporelatoriodoId}")
 	public void cadastrar_tiporelatoriodo(Long tiporelatoriodoId) {
-		TipoRelatorioDo tipoRelatorioDo = daoFactory.getTipoRelatorioDoDAO().get(tiporelatoriodoId); //pesquisar o tipo de relatorio dos demais órgãos no bd
-		result.include("tiporelatoriodo", tipoRelatorioDo); //botar o tipo de relatorio dos demais órgãos a disposicao da jsp
+		TipoRelatorioDo tiporelatoriodo = daoFactory.getTipoRelatorioDoDAO().get(tiporelatoriodoId); //pesquisar o tipo de relatorio dos demais órgãos no bd
+		result.include("tiporelatoriodo", tiporelatoriodo); //botar o tipo de relatorio dos demais órgãos a disposicao da jsp
 	}	
 }

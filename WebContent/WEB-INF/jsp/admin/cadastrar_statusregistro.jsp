@@ -31,7 +31,7 @@
 	                       			<div class="form-group">
 	                           			<a href="<c:url value="/admin/suporte/statusregistro"/>" class="btn btn-warning btn-large">
 	                           				<i class="glyphicon glyphicon-chevron-left"></i>
-	                           				CANCELAR
+	                           				 CANCELAR
 	                           			</a>
 	                           			<br>
 	                       			</div>

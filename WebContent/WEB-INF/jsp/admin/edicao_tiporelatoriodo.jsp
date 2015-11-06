@@ -46,16 +46,16 @@
 	                             	<div class="tab-content3">
 	                        			<div class="form-group">
 	                            			<div class="control-label">
-	                                    		<label for="tipoRelatorioDo.nome">Nome</label>
+	                                    		<label for="tiporelatoriodo.nome">Nome</label>
 	                            			</div> 
 	                            			<div class="control-label">
-	                                    		<input type="text" class="form-controln" name="tipoRelatorioDo.nome" value="${tiporelatoriodo.nome}">
+	                                    		<input type="text" class="form-controln" name="tiporelatoriodo.nome" value="${tiporelatoriodo.nome}">
 	                                  		</div>
 	                        			</div>
 	                                 	<br><br>
 	                                 	<div class="form-group">
 	                                		<div class="control-label">
-	                                			<button type="submit" id="consulta-busca" name="_method" 
+	                                			<button type="submit" id="editar" name="_method" 
 	                                				class="btn btn-success" value="PUT">
 	                                				<span class="glyphicon glyphicon-ok"></span>
 	                                				GRAVAR

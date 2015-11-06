@@ -31,7 +31,7 @@
 	                       			<div class="form-group">
 	                           			<a href="<c:url value="/admin/suporte/tiporelatorioaudin"/>" class="btn btn-warning btn-large">
 	                           				<i class="glyphicon glyphicon-chevron-left"></i>
-	                           				CANCELAR
+	                           				 CANCELAR
 	                           			</a>
 	                           			<br>
 	                       			</div>
@@ -46,10 +46,10 @@
 	                             	<div class="tab-content3">
 	                        			<div class="form-group">
 	                            			<div class="control-label">
-	                                    		<label for="tipoRelatorioAudin.nome">Nome</label>
+	                                    		<label for="tiporelatorioaudin.nome">Nome</label>
 	                            			</div> 
 	                            			<div class="control-label">
-	                                    		<input type="text" class="form-controln" name="tipoRelatorioAudin.nome">
+	                                    		<input type="text" class="form-controln" name="tiporelatorioaudin.nome">
 	                                  		</div>
 	                        			</div>
 	                                 	<br><br>
