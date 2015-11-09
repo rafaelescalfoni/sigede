@@ -1,4 +1,6 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -51,7 +53,8 @@
 	                            			<div class="control-label">
 	                                    		<input type="text" id="data_cadastro" class="form-controln" 
 	                                    			name="usuario.data_cadastro" 
-	                                    			value="${usuario.data_cadastro }">
+	                                    			value="<fmt:formatDate pattern="dd/MM/yyyy hh:mm:ss" value="${usuario.data_cadastro}" />" />
+	                                    			
 	                                  		</div>
 	                        			</div>
 	                        			<div class="form-group">
