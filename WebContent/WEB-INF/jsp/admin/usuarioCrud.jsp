@@ -1,5 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -78,21 +77,20 @@
 										<tbody>
 											<c:forEach items="${usuarioList}" var="usuario">
 												<tr>
-													<td>
-														<fmt:formatDate pattern="dd/MM/yyyy hh:mm:ss" value="${usuario.data_cadastro}" />
-													</td>
+													<td>${usuario.data_cadastro}</td>
 													<td>${usuario.nome}</td>
 													<td>${usuario.email}</td>
 													<td>${usuario.telefone}</td>
-													<td>${usuario.area.nome}</td>
+													<td>${usuario.area}</td>
 													<td>${usuario.perfil}</td>
-													<td>${usuario.status.nome}</td>
-													<td><a
-														href="<c:url value="/admin/suporte/usuario/${usuario.id}/update"/>">
+													<td>${usuario.status}</td>
+													<td>
+														<a href="<c:url value="/admin/suporte/usuario/${usuario.id}/update"/>">
 															<button type="button" class="btn btn-success">
 																<span class="glyphicon glyphicon-pencil"></span>
 															</button>
-													</a></td>
+														</a>
+													</td>
 												</tr>
 											</c:forEach>
 										</tbody>

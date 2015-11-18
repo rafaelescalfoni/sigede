@@ -23,7 +23,7 @@ public class UsuarioController {
 	}
 		
 	@Get("/suporte/usuario/{usuarioId}")
-	public void cadastrar_us(Long usuarioId) {
+	public void cadastrar_usuario(Long usuarioId) {
 		Usuario usuario = daoFactory.getUsuarioDAO().get(usuarioId); //pesquisar o usuario no bd
 		result.include("usuario", usuario); //botar o usuario a disposicao da jsp
 	}	

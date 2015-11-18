@@ -22,22 +22,60 @@
 		<div class="container">
 			<div class="col-md-8">
 				<h2>Bem-vindo ao SIGEDE</h2>
-				<p>
-					Esta é a tela inicial do SIGEDE (Sistema de Geranciamento de
-					Demandas). <br> Você pode cadastrar e consultar suas demandas
-					através do ícone correspondente no menu do topo.
-				</p>
-				<br>
-				<p>
-					<b>Inicie cadastrando suas demandas.</b>
-				</p>
-				<br> <br>
-				<div class="form-group">
-					<a href="<c:url value="/audin/audinfiocruz"/>"
-						class="btn btn-success btn-large"> <i
-						class="glyphicon glyphicon-plus"></i> COMEÇAR A CADASTRAR DEMANDAS
-					</a> <br>
-				</div>
+				<c:if test="${userSession.usuario.perfil eq 'Usuário Avançado'}">
+					<p>
+						Esta é a tela inicial do SIGEDE (Sistema de Geranciamento de
+						Demandas). <br> Você pode cadastrar e consultar suas demandas
+						através do ícone correspondente no menu do topo.
+					</p>
+					<br>
+					<p>
+						<b>Inicie cadastrando suas demandas.</b>
+					</p>
+					<br> <br>
+					<div class="form-group">
+						<a href="<c:url value="/audinfiocruz/cadastrar_audinfiocruz"/>"
+							class="btn btn-success btn-large"> <i
+							class="glyphicon glyphicon-plus"></i> COMEÇAR A CADASTRAR DEMANDAS
+						</a> <br>
+					</div>
+				</c:if>
+				<c:if test="${userSession.usuario.perfil eq 'Administrador'}">
+					<p>
+						Esta é a tela inicial do SIGEDE (Sistema de Geranciamento de
+						Demandas). <br> Você pode cadastrar e consultar suas demandas
+						através do ícone correspondente no menu do topo.
+					</p>
+					<br>
+					<p>
+						<b>Inicie cadastrando suas demandas.</b>
+					</p>
+					<br> <br>
+					<div class="form-group">
+						<a href="<c:url value="/audinfiocruz/cadastrar_audinfiocruz"/>"
+							class="btn btn-success btn-large"> <i
+							class="glyphicon glyphicon-plus"></i> COMEÇAR A CADASTRAR DEMANDAS
+						</a> <br>
+					</div>
+				</c:if>
+				<c:if test="${userSession.usuario.perfil eq 'Usuário Básico'}">
+					<p>
+						Esta é a tela inicial do SIGEDE (Sistema de Geranciamento de
+						Demandas). <br> Você pode consultar as demandas
+						através do ícone correspondente no menu do topo.
+					</p>
+					<br>
+					<p>
+						<b>Inicie consultando suas demandas.</b>
+					</p>
+					<br> <br>
+					<div class="form-group">
+						<a href="<c:url value="/demandas/audinfiocruz"/>"
+							class="btn btn-success btn-large"> <i
+							class="glyphicon glyphicon-plus"></i> COMEÇAR A CONSULTAR DEMANDAS
+						</a> <br>
+					</div>
+				</c:if>
 			</div>
 		</div>
 		<!-- div row conteudo -->

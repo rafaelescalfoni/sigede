@@ -49,7 +49,9 @@
 	                                    		<label for="nome">Nome</label>
 	                            			</div> 
 	                            			<div class="control-label">
-	                                    		<input id="nome" type="text" class="form-controln" name="usuario.nome">
+	                                    		<input id="nome" type="text" required="required"
+	                                    			pattern="{3,60}" maxlength="60" 
+	                                    			class="form-controln" name="usuario.nome">
 	                                  		</div>
 	                        			</div>
 	                                 	<div class="form-group">
@@ -57,7 +59,9 @@
 	                                    		<label for="email">E-mail</label>
 	                            			</div> 
 	                            			<div class="control-label">
-	                                    		<input id="email" type="text" class="form-controlm" name="usuario.email">
+	                                    		<input id="email" type="email" required="required" 
+	                                    			pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+	                                    			class="form-controlm" name="usuario.email">
 	                                  		</div>
 	                        			</div>
 	                        			<div class="form-group">
@@ -65,7 +69,9 @@
 	                                    		<label for="senha">Senha</label>
 	                            			</div> 
 	                            			<div class="control-label">
-	                                    		<input id="senha" type="password" class="form-controlm" name="usuario.senha">
+	                                    		<input id="senha" type="password" required="required"
+	                                    			pattern="[a-zA-Z0-9]{5,20}" maxlength="20" 
+	                                    			class="form-controlm" name="usuario.senha">
 	                                  		</div>
 	                        			</div>
 	                                 	<div class="form-group">
@@ -73,7 +79,8 @@
 	                                    		<label for="telefone">Telefone</label>
 	                            			</div> 
 	                            			<div class="control-label">
-	                                    		<input id="telefone" type="text" class="form-control" name="usuario.telefone">
+	                                    		<input id="telefone" type="text" required="required" 
+	                                    			maxlength="15" class="form-control" name="usuario.telefone" />
 	                                  		</div>
 	                        			</div>
 	                        			<div class="form-group">
@@ -81,11 +88,11 @@
 	                            				<label for="area">Área</label> 
 	                            			</div>
 	                            			<div class="control-label">
-	                              				<select id="area"  name="usuario.area.id" 
-	                              					class="form-control">
+	                              				<select id="area"  name="usuario.area" 
+	                              					class="form-control" required="required">
 	                              					<option value="">Selecione</option>
 	                                				<c:forEach items="${areaList}" var="area">
-	                                					<option value="${area.id}">${area.nome}</option>
+	                                					<option value="${area}">${area}</option>
 	                                				</c:forEach>
 	                              				</select>
 	                            			</div>
@@ -95,9 +102,8 @@
 	                            				<label for="perfil">Perfil</label>
 	                            			</div>
 	                            			<div class="control-label">
-	                              				<select id="perfil" 
-	                              						name="usuario.perfil" 
-	                              						class="form-control">
+	                              				<select id="perfil" name="usuario.perfil" 
+	                              					class="form-control" required="required">
 	                              					<option value="">Selecione</option>
 	                                				<c:forEach items="${perfilList}" var="perfil">
 					                                	<option value="${perfil}">${perfil}</option>
@@ -110,11 +116,11 @@
 	                            				<label for="status">Status</label>
 	                            			</div>
 	                            			<div class="control-label">
-	                              				<select id="status" name="usuario.status.id" 
-	                              					class="form-control">
+	                              				<select id="status" name="usuario.status"
+	                              					class="form-control" required="required">
 	                              					<option value="">Selecione</option>
 					                                <c:forEach items="${statusList}" var="status">
-	                                					<option value="${status.id}">${status.nome}</option>
+	                                					<option value="${status}">${status}</option>
 	                                				</c:forEach>
 	                              				</select>
 	                            			</div>
@@ -140,9 +146,9 @@
 		</div>
 		<script>
 		    $(document).ready(function () {
-		        $('#cal01').datepicker({
+		        $("#cal01").datepicker({
 		            format: "dd/mm/yyyy",
-		            language: "pt-BR"
+		            language: "pt-BR",
 		        });
 		      });
 		        $(document).ready(function () {

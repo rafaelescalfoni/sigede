@@ -1,21 +1,25 @@
 package br.sigede.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import br.sigede.model.Area;
-import br.sigede.model.Status;
+import org.hibernate.validator.Email;
+import org.hibernate.validator.Length;
+import org.hibernate.validator.NotEmpty;
+
 
 @Entity
 @Table(name = "usuario")
@@ -33,25 +37,29 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "data_cadastro")
-    private Date data_cadastro;
+    @Column(name = "data_cadastro", updatable=false, nullable=false)
+    private String data_cadastro;
     @Column(name = "nome")
+    @NotEmpty(message="O nome deve ser informado!")
+    @Length(min=3, message="O nome precisa ter mais de 3 letras")
     private String nome;
     @Column(name = "email")
+    @Email(message="Informe um e-mail valido!")
     private String email;
     @Column(name = "senha")
     private String senha;
     @Column(name = "telefone")
     private String telefone;
-    @JoinColumn(name = "area_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Area area;
+    @Column(name = "area", length=80)
+    private String area;
     @Column(name = "perfil", length=50)
     private String perfil;
-    @JoinColumn(name = "status_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Status status;
+    @Column(name = "status", length=50)
+    private String status;
     
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "usuario_id")
+	private List<Demanda> demandaList;
 
     public Usuario() {
     }
@@ -75,11 +83,11 @@ public class Usuario implements Serializable {
         this.id = id;
     }
     
-    public Date getData_cadastro() {
+    public String getData_cadastro() {
 		return data_cadastro;
 	}
 
-	public void setData_cadastro(Date data_cadastro) {
+	public void setData_cadastro(String data_cadastro) {
 		this.data_cadastro = data_cadastro;
 	}
 
@@ -114,12 +122,12 @@ public class Usuario implements Serializable {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-		
-	public Area getArea() {
+
+	public String getArea() {
 		return area;
 	}
 
-	public void setArea(Area area) {
+	public void setArea(String area) {
 		this.area = area;
 	}
 
@@ -131,12 +139,20 @@ public class Usuario implements Serializable {
 		this.perfil = perfil;
 	}
 
-    public Status getStatus() {
+    public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public List<Demanda> getDemandaList() {
+		return demandaList;
+	}
+
+	public void setDemandaList(List<Demanda> demandaList) {
+		this.demandaList = demandaList;
 	}
 
 	@Override

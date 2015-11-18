@@ -1,6 +1,4 @@
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -52,9 +50,8 @@
 	                            			</div> 
 	                            			<div class="control-label">
 	                                    		<input type="text" id="data_cadastro" class="form-controln" 
-	                                    			name="usuario.data_cadastro" 
-	                                    			value="<fmt:formatDate pattern="dd/MM/yyyy hh:mm:ss" value="${usuario.data_cadastro}" />" />
-	                                    			
+	                                    			name="usuario.data_cadastro" disabled="disabled"
+	                                    			value="${usuario.data_cadastro }">
 	                                  		</div>
 	                        			</div>
 	                        			<div class="form-group">
@@ -62,7 +59,9 @@
 	                                    		<label for="nome">Nome</label>
 	                            			</div> 
 	                            			<div class="control-label">
-	                                    		<input id="nome" type="text" class="form-controln" name="usuario.nome" value="${usuario.nome }">
+	                                    		<input id="nome" type="text" required="required"
+	                                    			pattern="{3,60}" maxlength="60" 
+	                                    			class="form-controln" name="usuario.nome" value="${usuario.nome }">
 	                                  		</div>
 	                        			</div>
 	                                 	<div class="form-group">
@@ -70,7 +69,9 @@
 	                                    		<label for="email">E-mail</label>
 	                            			</div> 
 	                            			<div class="control-label">
-	                                    		<input id="email" type="text" class="form-controlm" name="usuario.email" value="${usuario.email }">
+	                                    		<input id="email" type="email" required="required" 
+	                                    			pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+	                                    			class="form-controlm" name="usuario.email" value="${usuario.email }">
 	                                  		</div>
 	                        			</div>
 	                        			<div class="form-group">
@@ -78,7 +79,9 @@
 	                                    		<label for="senha">Senha</label>
 	                            			</div> 
 	                            			<div class="control-label">
-	                                    		<input id="senha" type="password" class="form-controlm" name="usuario.senha" value="${usuario.senha }">
+	                                    		<input id="senha" type="password" required="required"
+	                                    			pattern="[a-zA-Z0-9]{5,20}" maxlength="20" 
+	                                    			class="form-controlm" name="usuario.senha" value="${usuario.senha }">
 	                                  		</div>
 	                        			</div>
 	                                 	<div class="form-group">
@@ -86,7 +89,9 @@
 	                                    		<label for="telefone">Telefone</label>
 	                            			</div> 
 	                            			<div class="control-label">
-	                                    		<input id="telefone" type="text" class="form-control" name="usuario.telefone" value="${usuario.telefone }">
+	                                    		<input id="usuario.telefone" type="text" required="required" 
+	                                    			maxlength="15" class="form-control" 
+	                                    			name="usuario.telefone" value="${usuario.telefone }">
 	                                  		</div>
 	                        			</div>
 	                        			<div class="form-group">
@@ -94,12 +99,13 @@
 	                            				<label for="area">Área</label> 
 	                            			</div>
 	                            			<div class="control-label">
-	                              				<select id="area" name="usuario.area.id" class="form-control">
+	                              				<select id="area" name="usuario.area" 
+	                              					class="form-control" required="required">
 	                              					<option value="">Selecione</option>
 	                                				<c:forEach items="${areaList }" var="area">
-														<option value="${area.id }" 
-															<c:if test="${area.id eq usuario.area.id}">selected="selected"</c:if>>
-																${area.nome }
+														<option value="${area }" 
+															<c:if test="${area eq usuario.area}">selected="selected"</c:if>>
+																${area }
 														</option>
 													</c:forEach>
 	                              				</select>
@@ -110,11 +116,13 @@
 	                            				<label for="perfil">Perfil</label>
 	                            			</div>
 	                            			<div class="control-label">
-	                              				<select id="perfil" name="usuario.perfil" class="form-control">
+	                              				<select id="perfil" name="usuario.perfil" 
+	                              					class="form-control" required="required">
 	                              					<option value="">Selecione</option>
 	                                				<c:forEach items="${perfilList }" var="perfil">
-					                                	<option value="${perfil }" <c:if test="${perfil eq usuario.perfil}">selected="selected"</c:if>>
-					                                		${perfil }
+					                                	<option value="${perfil }" 
+					                                		<c:if test="${perfil eq usuario.perfil}">selected="selected"</c:if>>
+					                                			${perfil }
 					                                	</option>
 	                              					</c:forEach>
 	                              				</select>
@@ -125,11 +133,13 @@
 	                            				<label for="status">Status</label>
 	                            			</div>
 	                            			<div class="control-label">
-	                              				<select id="status" name="usuario.status.id" class="form-control">
+	                              				<select id="status" name="usuario.status" 
+	                              					class="form-control" required="required">
 	                              					<option value="">Selecione</option>
 					                                <c:forEach items="${statusList }" var="status">
-														<option value="${status.id }" <c:if test="${status.id eq usuario.status.id}">selected="selected"</c:if>>
-															${status.nome }
+														<option value="${status }" 
+															<c:if test="${status eq usuario.status}">selected="selected"</c:if>>
+																${status }
 														</option>
 													</c:forEach>
 	                              				</select>

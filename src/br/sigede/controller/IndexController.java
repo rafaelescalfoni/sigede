@@ -1,5 +1,6 @@
 package br.sigede.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -11,11 +12,11 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.sigede.dao.DAOFactory;
-import br.sigede.model.Area;
-import br.sigede.model.Status;
 import br.sigede.model.Usuario;
 import br.sigede.utils.anotacoes.Public;
+import br.sigede.utils.componentes.AreaEnum;
 import br.sigede.utils.componentes.PerfilEnum;
+import br.sigede.utils.componentes.StatusEnum;
 import br.sigede.utils.componentes.UserSession;
 
 @Resource
@@ -73,23 +74,17 @@ public class IndexController {
 		List<Usuario> usuarioList = daoFactory.getUsuarioDAO().list();
 		// se estiver, criar um usuário padrão
 		if (usuarioList == null || usuarioList.size() == 0) {
-			Area areaPadrao = new Area();
-			areaPadrao.setNome("Coordenação de Gestão de Tecnologia da Informação - CGTI");
-			daoFactory.getAreaDAO().add(areaPadrao);
-			
-			Status statusPadrao = new Status();
-			statusPadrao.setNome("Ativo");
-			daoFactory.getStatusDAO().add(statusPadrao);
-			
 			Usuario usuarioPadrao = new Usuario();
-			usuarioPadrao.setData_cadastro(new Date()); // retorna a data e a hora atual
+			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+			Date data_atual = new Date();
+			usuarioPadrao.setData_cadastro(formatador.format(data_atual)); // retorna a data e a hora atual
 			usuarioPadrao.setNome("Usuário Padrão");
 			usuarioPadrao.setEmail("admin@admin.com.br");
 			usuarioPadrao.setSenha("admin");
 			usuarioPadrao.setTelefone("(21)2222-2222");
-			usuarioPadrao.setArea(areaPadrao);
+			usuarioPadrao.setArea(AreaEnum.CGTI.getNome());
 			usuarioPadrao.setPerfil(PerfilEnum.ADMINISTRADOR.getNome());
-			usuarioPadrao.setStatus(statusPadrao);
+			usuarioPadrao.setStatus(StatusEnum.ATIVO.getNome());
 			daoFactory.getUsuarioDAO().add(usuarioPadrao);
 		}
 	}
