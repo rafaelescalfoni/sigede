@@ -37,29 +37,18 @@
 				                    </div>
 		                    	</div>
 		                        <div class="tab-content2">
-		                    		<h4>CADASTRO DE DEMANDAS ORIGINADAS DA AUDITORIA INTERNA (AUDIN)</h4>
+		                    		<h4>CADASTRO DE RELATÓRIOS EMITIDOS PELA AUDITORIA INTERNA (AUDIN)</h4>
 		                    	</div>
-		                      	<form class="form-inline" role="form" action="<c:url value="/demandas/audinfiocruz"/>" method="post">
+		                      	<form class="form-inline" role="form" 
+		                      		action="<c:url value="/demandas/audinfiocruz"/>" method="post">
 		                        	<!-- Select Basic -->
 		                            <div class="tab-content3">
-		                            	<div class="form-group">
-		                            		<div class="control-label">
-		                            			<label for="tipodemanda">Tipo de Demanda</label>
-		                            		</div>
-		                              		<select id="tipodemanda" name="demanda.tipodemanda" 
-		                              			class="form-control" required="required">
-		                              			<option value="">Selecione</option>
-	                                			<c:forEach items="${tipodemandaList}" var="tipodemanda">
-	                                				<option value="${tipodemanda}">${tipodemanda}</option>
-	                                			</c:forEach>
-	                              			</select>
-		                            	</div>
 		                        		<div class="form-group">
 		                            		<div class="control-label">
-		                            			<label for="tiporelatorioaudin">Tipo de Relatório</label>
+		                            			<label for="tiporelatorioaudin">Tipo de Relatório*</label>
 		                            		</div>
 		                              		<select id="tiporelatorioaudin"  name="demandaaudin.tiporelatorioaudin" 
-		                              			class="form-control" required="required">
+		                              			class="form-control" required="required" >
 		                              			<option value="">Selecione</option>
 	                                			<c:forEach items="${tiporelatorioaudinList}" var="tiporelatorioaudin">
 	                                				<option value="${tiporelatorioaudin}">${tiporelatorioaudin}</option>
@@ -68,18 +57,18 @@
 		                            	</div>
 		                            	<div class="form-group">
 		                            		<div class="control-label">
-		                            			<label for="num_demanda">Número</label> 
+		                            			<label for="num_demanda">Número*</label> 
 		                            		</div>
-		                              		<input id="num_demanda" type="text" name="demanda.num_demanda" 
+		                              		<input id="num_demanda" type="text" name="demandaaudin.num_demanda" 
 		                              			class="form-control" required="required">
 		                            	</div>
 		                            	<div class="form-group">
 		                            		<div class="control-label">
-		                            			<label for="ano">Ano</label>
+		                            			<label for="ano">Ano*</label>
 		                            		</div>
 		                            		<div class="control-label">
-		                              			<select id="ano" name="demanda.ano" 
-		                              				class="form-control" required="required">
+		                              			<select id="ano" name="demandaaudin.ano" 
+		                              				class="form-control" required="required" >
 		                              				<option value="">Selecione</option>
 		                                			<c:forEach items="${anoList}" var="ano">
 		                                				<option value="${ano}">${ano}</option>
@@ -89,34 +78,34 @@
 		                          		</div>
 		                            	<div class="form-group">
 		                            		<div class="control-label">
-		                            			<label for="data_inicio">Data Inicio</label>
+		                            			<label for="data_inicio">Data Início*</label>
 		                            		</div>
-		                                	<input id="cal02" type="text" name="demandaaudin.data_inicio" 
-		                                		class="form-control" maxlength="10" required="required">
+		                                	<input id="cal01" type="text" name="demandaaudin.data_inicio" 
+		                                		class="form-control" maxlength="10" required="required" >
 		                            	</div>
 		                            	<div class="form-group">
 		                            		<div class="control-label">
-		                            			<label for="data_fim">Data Fim</label>
+		                            			<label for="data_fim">Data Fim*</label>
 		                            		</div>   
-		                            		<input id="cal03" type="text" name="demandaaudin.data_fim"
-		                            			class="form-control" maxlength="10" required="required">
+		                            		<input id="cal02" type="text" name="demandaaudin.data_fim"
+		                            			class="form-control" maxlength="10" required="required" >
 		                          		</div>
 		                          		<div class="form-group">
 			                            	<div class="control-label">
 			                                    <label for="processo_interno">Processo FIOCRUZ</label>
 			                            	</div> 
 			                            	<div class="control-label">
-			                                    <input id="processo_interno" type="text" 
-			                                    	class="form-control" name="demanda.processo_interno">
+			                                    <input id="processo_interno" type="text" name="demandaaudin.processo_interno" 
+			                                    	class="form-control" >
 			                                </div>
 			                        	</div>
 		                            	<div class="form-group">
 		                            		<div class="control-label">
-		                            			<label for="institucional">Institucional</label>
+		                            			<label for="institucional">Institucional*</label>
 		                            		</div>
 		                            		<div class="control-label">
-		                              			<select id="institucional" name="demandaaudin.institucional" 
-		                              				class="form-control" required="required">
+		                              			<select id="institucionalSelecionado" name="demandaaudin.institucional" required="required"
+		                              				class="form-control" onchange="desabilitarBox(this.value, 'comboInstitucional')">
 					                                <option value="">Selecione</option>
 					                                <c:forEach items="${institucionalList}" var="institucional">
 					                                	<option value="${institucional}">${institucional}</option>
@@ -129,11 +118,11 @@
 					                       		<label for="foco">Foco</label>
 					                       	</div>
 					                       	<div class="control-label">
-					                       		<select id="foco" name="demandaaudin.foco" 
-					                       			class="form-control">
+					                       		<select id="focoSelecionado" name="demandaaudin.foco" 
+					                       			class="form-control" onchange="desabilitarBox(this.value, 'comboFoco')">
 					                       			<option value="">Selecione</option>
-					                       			<c:forEach items="${focoList}" var="foco">
-					                       				<option value="${foco}">${foco}</option>
+					                       			<c:forEach items="${areatematicaList}" var="areatematica">
+					                       				<option value="${areatematica}">${areatematica}</option>
 					                       			</c:forEach>
 					                       		</select>
 					                       	</div>
@@ -143,11 +132,11 @@
 					                       		<label for="unidadeauditada">Unidade Auditada</label>
 					                       	</div>
 					                       	<div class="control-label">
-					                       		<select id="unidadeauditada" name="demandaaudin.unidadeauditada" 
-					                       			class="form-control">
+					                       		<select id="unidadeauditadaSelecionada" name="demandaaudin.unidadeauditada" 
+					                       			class="form-control" onchange="desabilitarBox(this.value, 'comboUnidadeAuditada')" >
 					                       			<option value="">Selecione</option>
-					                       			<c:forEach items="${unidadeauditadaList}" var="unidadeauditada">
-					                       				<option value="${unidadeauditada}">${unidadeauditada}</option>
+					                       			<c:forEach items="${unidadeList}" var="unidade">
+					                       				<option value="${unidade}">${unidade}</option>
 					                       			</c:forEach>
 					                       		</select>
 					                       	</div>
@@ -184,6 +173,25 @@
 		            language: "pt-BR"
 		        });
 		      });
+		</script>
+		<script>
+			function desabilitarBox(comboBoxValue, comboBox){  
+				if(comboBox == "comboInstitucional"){
+					document.getElementById("focoSelecionado").disabled = false;
+					document.getElementById("unidadeauditadaSelecionada").disabled = false;
+					if(comboBoxValue == "Sim"){
+						document.getElementById("institucionalSelecionado").disabled = false;
+						document.getElementById("focoSelecionado").disabled = false;
+						document.getElementById("unidadeauditadaSelecionada").disabled = true;
+					} else {
+						if(comboBoxValue == "Não"){
+							document.getElementById("institucionalSelecionado").disabled = false;
+							document.getElementById("focoSelecionado").disabled = true;
+							document.getElementById("unidadeauditadaSelecionada").disabled = false;
+						}	
+					}
+				} 
+			}
 		</script>
 	</body>
 </html>

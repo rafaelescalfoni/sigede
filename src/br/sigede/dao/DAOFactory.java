@@ -3,11 +3,12 @@ package br.sigede.dao;
 import javax.persistence.EntityManager;
 
 import br.com.caelum.vraptor.ioc.Component;
-import br.sigede.model.Demanda;
 import br.sigede.model.DemandaAudin;
 import br.sigede.model.DemandaDo;
 import br.sigede.model.DemandaTcu;
-import br.sigede.model.RegistroDemanda;
+import br.sigede.model.RegistroDemandaAudin;
+import br.sigede.model.RegistroDemandaDo;
+import br.sigede.model.RegistroDemandaTcu;
 import br.sigede.model.Usuario;
 
 
@@ -24,10 +25,6 @@ public class DAOFactory {
 		return new UsuarioDAO(this.em, Usuario.class);
 	}
 
-	public DemandaDAO getDemandaDAO() {
-		return new DemandaDAO(this.em, Demanda.class);
-	}
-	
 	public DemandaAudinDAO getDemandaAudinDAO() {
 		return new DemandaAudinDAO(this.em, DemandaAudin.class);
 	}
@@ -40,7 +37,17 @@ public class DAOFactory {
 		return new DemandaDoDAO(this.em, DemandaDo.class);
 	}
 	
-	public RegistroDemandaDAO getRegistroDemandaDAO() {
-		return new RegistroDemandaDAO(this.em, RegistroDemanda.class);
+	public RegistroDemandaAudinDAO getRegistroDemandaAudinDAO() {
+		return new RegistroDemandaAudinDAO(this.em, RegistroDemandaAudin.class);
 	}
+	
+	public RegistroDemandaTcuDAO getRegistroDemandaTcuDAO() {
+		return new RegistroDemandaTcuDAO(this.em, RegistroDemandaTcu.class);
+	}
+	
+	public RegistroDemandaDoDAO getRegistroDemandaDoDAO() {
+		return new RegistroDemandaDoDAO(this.em, RegistroDemandaDo.class);
+	}
+	
+	
 }

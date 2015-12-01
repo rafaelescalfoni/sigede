@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<select name="institucional" id="institucionalSelecionado" style="width:125px;" onchange="desabilitarBox(this.value, 'comboInstitucional')">
+     <option value=""selected="selected">Selecionar</option>
+     <option value="sim">SIM</option>
+     <option value="não">NÃO</option>
+</select>
+    
+    
+<select name="foco" id="focoSelecionado" style="width:125px;" onchange="desabilitarBox(this.value,'comboFoco')">
+     <option value=""selected="selected">Selecionar</option>
+     <option value="1">DISPOSITIVO</option>
+     <option value="2">TESTE</option>
+</select> 
+
+<select name="unidadeauditada" id="unidadeauditadaSelecionado" style="width:125px;" onchange="desabilitarBox(this.value,'comboUnidadeAuditada')">
+     <option value=""selected="selected">Selecionar</option>
+     <option value="1">DISPOSITIVO</option>
+     <option value="2">TESTE</option>
+</select> 
+
+
+<script>
+function desabilitarBox(comboBoxValue, comboBox){  
+	if(comboBox == "comboInstitucional"){
+		document.getElementById("focoSelecionado").disabled = false;
+		document.getElementById("unidadeauditadaSelecionado").disabled = false;
+		if(comboBoxValue == "sim"){
+			document.getElementById("institucionalSelecionado").disabled = false;
+			document.getElementById("focoSelecionado").disabled = false;
+			document.getElementById("unidadeauditadaSelecionado").disabled = true;
+		} else {
+			if(comboBoxValue == "não"){
+				document.getElementById("institucionalSelecionado").disabled = false;
+				document.getElementById("focoSelecionado").disabled = true;
+				document.getElementById("unidadeauditadaSelecionado").disabled = false;
+			}	
+		}
+	} else if (comboBox == "comboDispositivo"){
+		document.getElementById("institucionalSelecionado").disabled = false;
+		if(comboBoxValue == "institucional"){
+			document.getElementById("DispSelecionado").disabled = false;
+			document.getElementById("institucionalSelecionado").disabled = true;
+		}
+	}
+}
+</script>
+</body>
+</html>

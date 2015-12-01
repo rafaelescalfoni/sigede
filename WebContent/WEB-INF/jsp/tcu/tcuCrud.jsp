@@ -45,78 +45,17 @@
 	                       		<div class="tab-content2">
 	                   				<h4>CONSULTA POR DEMANDAS ORIGINADAS DO TRIBUNAL DE CONTAS DA UNIÃO (TCU)</h4>
 	                   			</div>
+	                   			<form action="<c:url value="/demandas/tcu/pesquisa" />" method="get">
+									<div class="input-group h2">
+										<input name="palavraChave" class="form-control" id="search" type="text" placeholder="Pesquisar...">
+											<span class="input-group-btn">
+												<button class="btn btn-primary" type="submit" value="Pesquisar">
+													<span class="glyphicon glyphicon-search"></span>
+												</button>
+											</span>
+									</div>
+								</form>
 			                   	<form class="form-inline" role="form">
-			                       	<!-- Select Basic -->
-			                       	<div class="tab-content3">
-			                           	<div class="control-label">
-			                            	<label>Assunto</label>
-		                                </div>
-		                            	<textarea class="textarea" rows="1" ></textarea>
-		                            	<div class="form-group">
-			                                <div class="control-label">
-			                                    <label>Tipo</label>
-			                                </div>
-			                              	<select class="form-control">
-				                                <option value=""></option>
-				                                <option value="Conformidade em Recursos Humanos">Conformidade em Recursos Humanos</option>
-				                                <option value="Conformidade">Conformidade</option>
-				                                <option value="Especial">Especial</option>
-				                                <option value="Monitoramento">Monitoramento</option>
-			                              	</select>
-		                        		</div>
-		                            	<div class="form-group">
-		                                	<div class="control-label">
-		                            			<label>Número</label> 
-		                                	</div>
-			                              	<select class="form-control">
-				                                <option value=""></option>
-				                                <option value="000">000</option>
-				                                <option value="001">001</option>
-				                                <option value="002">002</option>
-				                                <option value="003">003</option>
-			                             	</select>
-		                            	</div>
-		                           		<div class="form-group">
-		                                	<div class="control-label">
-		                                    	<label>Ano</label> 
-		                                	</div>
-			                              	<select class="form-control">
-				                                <option value=""></option>
-				                                <option value="2014">2014</option>
-				                                <option value="2015">2015</option>
-			                              	</select>
-		                            	</div>
-		                             	<div class="form-group">
-			                                <div class="control-label">
-			                                    <label>Unidade Auditada</label> 
-			                                </div>    
-			                              	<select  class="form-control">
-				                                <option value=""></option>
-				                                <option value="Bio-Manguinhos">Bio-Manguinhos</option>
-				                                <option value="Farmanguinhos">Farmanguinhos</option>
-				                                <option value="DIRAD">DIRAD</option>
-				                                <option value="DIREH">DIREH</option>
-				                                <option value="DIRAC">DIRAC</option>
-			                              	</select>
-		                            	</div>
-		                        		<div class="form-group">
-			                                <div class="control-label">
-			                                    <label>Foco</label>
-			                                </div>    
-			                              	<select class="form-control">
-			                                	<option value=""></option>
-			                                	<option value="Aposentadoria e Pensão"> Aposentadoria e Pensão</option>
-			                                	<option value="Admissão">Admissão</option>
-			                                	<option value="Afastamentos">Afastamentos</option>
-			                                	<option value="Contratos">Contratos</option>
-			                              	</select>
-		                            	</div>
-		                            	<button type="button" class="btn btn-info">
-		                            		<span class="glyphicon glyphicon-search"></span>
-		                            		 BUSCAR
-		                            	</button>
-		                            	<br><br>
-		                        	</div>
 		                            <br>
 		                            <div class="container-fluid">       
 		                                <table class="table table-striped">
@@ -124,32 +63,116 @@
 			                                	<tr>
 				                                	<th>DESCRIÇÃO</th>
 				                                	<th>EMISSOR</th>
-				                                	<th>PROCESSO TC</th>
-				                                    <th>ACÓRDÃO</th>
+				                                	<th>PROCESSO FIOCRUZ</th>
+				                                    <th>NATUREZA</th>
 				                                    <th>ASSUNTO</th>
 				                                    <th>STATUS</th>
+				                                    <c:if test="${userSession.usuario.perfil eq 'Administrador'}">
+														<th>NOVO</th>
+													</c:if>
+													<c:if test="${userSession.usuario.perfil eq 'Usuário Avançado'}">
+														<th>NOVO</th>
+													</c:if>
 				                                    <th>EDITAR</th>
 			                                    </tr>
 											</thead>
 			                                <tbody>
-			                                    <c:forEach items="${demandatcuList}" var="demandatcu">
+			                                    <c:forEach items="${registrodemandatcuList}" var="registrodemandatcu">
 													<tr>
 														<td>
-															${demandatcu.tipodemanda}
-															<c:if test="${demandatcu.tipodemanda ne 'E-Mail'}">
-																<c:if test="${demandatcu.tipodemanda ne 'Telefonema'}">
-																	 nº ${demandatcu.num_demanda}/${demandatcu.ano.ano}																
+															${registrodemandatcu.demandatcu.tipodemanda}
+															<c:if test="${registrodemandatcu.demandatcu.tipodemanda ne 'E-Mail'}">
+																<c:if test="${registrodemandatcu.demandatcu.tipodemanda ne 'Telefonema'}">
+																	 nº ${registrodemandatcu.demandatcu.num_demanda}
+																	 <c:if test="${registrodemandatcu.demandatcu.tipodemanda ne 'Diário Oficial da União'}">
+																	 	/
+																	 </c:if>
+																	 ${registrodemandatcu.demandatcu.ano}																
 																</c:if>
 															</c:if>
-														  	de ${demandatcu.data_demanda}
+														  	de ${registrodemandatcu.demandatcu.data_demanda}
 														</td>
-														<td>${demandatcu.remetente}</td>
-														<td>${demandatcu.processotcu}</td>
-														<td>${demandatcu.num_acordao}/${demandatcu.anoacordao.ano}-${demandatcu.colegiadoacordao}</td>
-														<td>${demandatcu.assunto}</td>
-														<td>${demandatcu.statusregistro}</td>
+														<td>${registrodemandatcu.demandatcu.remetente}</td>
+														<td>${registrodemandatcu.demandatcu.processo_interno}</td>
+														<td>${registrodemandatcu.demandatcu.naturezatcu}
+															<c:if test="${registrodemandatcu.demandatcu.naturezatcu eq 'Acórdão'}">
+																nº ${registrodemandatcu.demandatcu.num_acordao}/${registrodemandatcu.demandatcu.anoacordao}-${registrodemandatcu.demandatcu.colegiadoacordao}
+															</c:if>
+														</td>
+														<td>${registrodemandatcu.assunto}</td>
+														<td>${registrodemandatcu.statusregistro}</td>
+														<c:if test="${userSession.usuario.perfil eq 'Administrador'}">
+															<td>
+																<a href="<c:url value="/demandas/tcu/registro/${registrodemandatcu.demandatcu.id}/add"/>">
+																	<button type="button" class="btn btn-success">
+																		<span class="glyphicon glyphicon-plus"></span>
+																	</button>
+																</a>
+															</td>
+														</c:if>
+														<c:if test="${userSession.usuario.perfil eq 'Usuário Avançado'}">
+															<td>
+																<a href="<c:url value="/demandas/tcu/registro/${registrodemandatcu.demandatcu.id}/add"/>">
+																	<button type="button" class="btn btn-success">
+																		<span class="glyphicon glyphicon-plus"></span>
+																	</button>
+																</a>
+															</td>
+														</c:if>
 														<td>
-															<a href="<c:url value="/demandas/tcu/${demandatcu.id}/update"/>">
+															<a href="<c:url value="/demandas/tcu/registro/${registrodemandatcu.id}/update"/>">
+																<button type="button" class="btn btn-success">
+																	<span class="glyphicon glyphicon-pencil"></span>
+																</button>
+															</a>
+														</td>
+													</tr>
+												</c:forEach>
+												<!-- PESQUISAR DEMANDAS -->
+												<c:forEach items="${demandasEncontradas}" var="registrodemandatcu">
+													<tr>
+														<td>
+															${registrodemandatcu.demandatcu.tipodemanda}
+															<c:if test="${registrodemandatcu.demandatcu.tipodemanda ne 'E-Mail'}">
+																<c:if test="${registrodemandatcu.demandatcu.tipodemanda ne 'Telefonema'}">
+																	 nº ${registrodemandatcu.demandatcu.num_demanda}
+																	 <c:if test="${registrodemandatcu.demandatcu.tipodemanda ne 'Diário Oficial da União'}">
+																	 	/
+																	 </c:if>
+																	 ${registrodemandatcu.demandatcu.ano}																
+																</c:if>
+															</c:if>
+														  	de ${registrodemandatcu.demandatcu.data_demanda}
+														</td>
+														<td>${registrodemandatcu.demandatcu.remetente}</td>
+														<td>${registrodemandatcu.demandatcu.processo_interno}</td>
+														<td>${registrodemandatcu.demandatcu.naturezatcu}
+															<c:if test="${registrodemandatcu.demandatcu.naturezatcu eq 'Acórdão'}">
+																nº ${registrodemandatcu.demandatcu.num_acordao}/${registrodemandatcu.demandatcu.anoacordao}-${registrodemandatcu.demandatcu.colegiadoacordao}
+															</c:if>
+														</td>
+														<td>${registrodemandatcu.assunto}</td>
+														<td>${registrodemandatcu.statusregistro}</td>
+														<c:if test="${userSession.usuario.perfil eq 'Administrador'}">
+															<td>
+																<a href="<c:url value="/demandas/tcu/registro/${registrodemandatcu.demandatcu.id}/add"/>">
+																	<button type="button" class="btn btn-success">
+																		<span class="glyphicon glyphicon-plus"></span>
+																	</button>
+																</a>
+															</td>
+														</c:if>
+														<c:if test="${userSession.usuario.perfil eq 'Usuário Avançado'}">
+															<td>
+																<a href="<c:url value="/demandas/tcu/registro/${registrodemandatcu.demandatcu.id}/add"/>">
+																	<button type="button" class="btn btn-success">
+																		<span class="glyphicon glyphicon-plus"></span>
+																	</button>
+																</a>
+															</td>
+														</c:if>
+														<td>
+															<a href="<c:url value="/demandas/tcu/registro/${registrodemandatcu.id}/update"/>">
 																<button type="button" class="btn btn-success">
 																	<span class="glyphicon glyphicon-pencil"></span>
 																</button>

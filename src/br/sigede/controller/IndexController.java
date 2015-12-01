@@ -62,8 +62,12 @@ public class IndexController {
 		usuario = daoFactory.getUsuarioDAO().get(strQuery, params);
 		
 		if (usuario != null) {
-			userSession.setUsuario(usuario);
-			result.redirectTo(this).home();
+			if (usuario.getStatus().equals("Ativo")){
+				userSession.setUsuario(usuario);
+				result.redirectTo(this).home();
+			} else {
+				result.redirectTo(this).login("Usuário inválido");
+			}
 		} else {
 			result.redirectTo(this).login("Usuário inválido");
 		}

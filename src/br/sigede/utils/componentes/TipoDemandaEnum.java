@@ -11,10 +11,7 @@ public enum TipoDemandaEnum {
 	DOU("Diário Oficial da União"),
 	EMAIL("E-Mail"),
 	OFICIO("Ofício"),
-	MEMORANDO("Memorando"),
-	MEMORANDOCIRCULAR("Memorando-Circular"),
-	TELEFONEMA("Telefonema"),
-	RELATORIO("Relatório");
+	TELEFONEMA("Telefonema");
 	
 	private String tipodemanda;
 	

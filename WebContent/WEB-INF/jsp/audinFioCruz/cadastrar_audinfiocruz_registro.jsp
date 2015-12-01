@@ -37,26 +37,11 @@
 				                    </div>
 		                    	</div>
 		                        <div class="tab-content2">
-		                    		<h4>CADASTRO DE DEMANDAS ORIGINADAS DA AUDITORIA INTERNA (AUDIN)</h4>
+		                    		<h4>CADASTRO DE RELATÓRIOS EMITIDOS PELA AUDITORIA INTERNA (AUDIN)</h4>
 		                    	</div>
-		                      	<form class="form-inline" role="form" action="<c:url value="/demandas/audinfiocruz/{demanda.id}"/>" method="post">
-		                        	<!-- Select Basic -->
+		                      	<form class="form-inline" role="form" 
+		                      		action="<c:url value="/demandas/audinfiocruz/registro/${demandaaudin.id}"/>" method="post">
 		                            <div class="tab-content3">
-		                            	<div class="form-group">
-		                            		<div class="control-label">
-		                            			<label for="tipodemanda">Tipo de Demanda</label>
-		                            		</div>
-		                              		<select id="tipodemanda" name="demanda.tipodemanda" 
-		                              			class="form-control" disabled="disabled">
-		                              			<option value="">Selecione</option>
-	                                			<c:forEach items="${tipodemandaList}" var="tipodemanda">
-	                                				<option value="${tipodemanda}"
-	                                					<c:if test="${tipodemanda eq demanda.tipodemanda}">selected="selected"</c:if>>
-	                                					${tipodemanda}
-	                                				</option>
-	                                			</c:forEach>
-	                              			</select>
-		                            	</div>
 		                        		<div class="form-group">
 		                            		<div class="control-label">
 		                            			<label for="tiporelatorioaudin">Tipo de Relatório</label>
@@ -76,20 +61,20 @@
 		                            		<div class="control-label">
 		                            			<label for="num_demanda">Número</label> 
 		                            		</div>
-		                              		<input id="num_demanda" type="text" name="demanda.num_demanda" 
-		                              			class="form-control" disabled="disabled" value="${demanda.num_demanda}">
+		                              		<input id="num_demanda" type="text" name="demandaaudin.num_demanda" 
+		                              			class="form-control" disabled="disabled" value="${demandaaudin.num_demanda}">
 		                            	</div>
 		                            	<div class="form-group">
 		                            		<div class="control-label">
 		                            			<label for="ano">Ano</label>
 		                            		</div>
 		                            		<div class="control-label">
-		                              			<select id="ano" name="demanda.ano" 
+		                              			<select id="ano" name="demandaaudin.ano" 
 		                              				class="form-control" disabled="disabled">
 		                              				<option value="">Selecione</option>
 		                                			<c:forEach items="${anoList}" var="ano">
 		                                				<option value="${ano}"
-		                                					<c:if test="${ano eq demanda.ano}">selected="selected"</c:if>>
+		                                					<c:if test="${ano eq demandaaudin.ano}">selected="selected"</c:if>>
 		                                					${ano}
 		                                				</option>
 		                                			</c:forEach>
@@ -100,14 +85,14 @@
 		                            		<div class="control-label">
 		                            			<label for="data_inicio">Data Inicio</label>
 		                            		</div>
-		                                	<input id="cal02" type="text" name="demandaaudin.data_inicio" 
+		                                	<input id="cal01" type="text" name="demandaaudin.data_inicio" 
 		                                		class="form-control" disabled="disabled" value="${demandaaudin.data_inicio}">
 		                            	</div>
 		                            	<div class="form-group">
 		                            		<div class="control-label">
 		                            			<label for="data_fim">Data Fim</label>
 		                            		</div>   
-		                            		<input id="cal03" type="text" name="demandaaudin.data_fim"
+		                            		<input id="cal02" type="text" name="demandaaudin.data_fim"
 		                            			class="form-control" disabled="disabled" value="${demandaaudin.data_fim}">
 		                          		</div>
 		                          		<div class="form-group">
@@ -115,8 +100,8 @@
 			                                    <label for="processo_interno">Processo FIOCRUZ</label>
 			                            	</div> 
 			                            	<div class="control-label">
-			                                    <input id="processo_interno" type="text" name="demanda.processo_interno"
-			                                    	class="form-control" disabled="disabled" value="${demanda.processo_interno}">
+			                                    <input id="processo_interno" type="text" name="demandaaudin.processo_interno"
+			                                    	class="form-control" disabled="disabled" value="${demandaaudin.processo_interno}">
 			                                </div>
 			                        	</div>
 		                            	<div class="form-group">
@@ -125,7 +110,7 @@
 		                            		</div>
 		                            		<div class="control-label">
 		                              			<select id="institucional" name="demandaaudin.institucional" 
-		                              				class="form-control" required="required">
+		                              				class="form-control" disabled="disabled">
 					                                <option value="">Selecione</option>
 					                                <c:forEach items="${institucionalList}" var="institucional">
 					                                	<option value="${institucional}" 
@@ -136,52 +121,55 @@
 		                              			</select>
 		                            		</div>
 		                          		</div>
-					                    <div class="form-group">
-					                       	<div class="control-label">
-					                       		<label for="foco">Foco</label>
-					                       	</div>
-					                       	<div class="control-label">
-					                       		<select id="foco" name="demandaaudin.foco" 
-					                       			class="form-control">
-					                       			<option value="">Selecione</option>
-					                       			<c:forEach items="${focoList}" var="foco">
-					                       				<option value="${foco}"
-		                                					<c:if test="${foco eq demandaaudin.foco}">selected="selected"</c:if>>
-		                                					${foco}
-		                                				</option>
-					                       			</c:forEach>
-					                       		</select>
-					                       	</div>
-		                          		</div>
-		                          		<div class="form-group">
-					                       	<div class="control-label">
-					                       		<label for="unidadeauditada">Unidade Auditada</label>
-					                       	</div>
-					                       	<div class="control-label">
-					                       		<select id="unidadeauditada" name="demandaaudin.unidadeauditada" 
-					                       			class="form-control">
-					                       			<option value="">Selecione</option>
-					                       			<c:forEach items="${unidadeauditadaList}" var="unidadeauditada">
-					                       				<option value="${unidadeauditada}"
-		                                					<c:if test="${unidadeauditada eq demandaaudin.unidadeauditada}">selected="selected"</c:if>>
-		                                					${unidadeauditada}
-		                                				</option>
-					                       			</c:forEach>
-					                       		</select>
-					                       	</div>
-					                    </div>
+		                          		<c:if test="${demandaaudin.foco ne null}">
+						                    <div class="form-group">
+						                       	<div class="control-label">
+						                       		<label for="foco">Foco</label>
+						                       	</div>
+						                       	<div class="control-label">
+						                       		<select id="foco" name="demandaaudin.foco" 
+						                       			class="form-control" disabled="disabled">
+						                       			<option value="">Selecione</option>
+						                       			<c:forEach items="${focoList}" var="foco">
+						                       				<option value="${foco}"
+			                                					<c:if test="${foco eq demandaaudin.foco}">selected="selected"</c:if>>
+			                                					${foco}
+			                                				</option>
+						                       			</c:forEach>
+						                       		</select>
+						                       	</div>
+			                          		</div>
+		                          		</c:if>
+		                          		<c:if test="${demandaaudin.unidadeauditada ne null}">
+			                          		<div class="form-group">
+						                       	<div class="control-label">
+						                       		<label for="unidadeauditada">Unidade Auditada</label>
+						                       	</div>
+						                       	<div class="control-label">
+						                       		<select id="unidadeauditada" name="demandaaudin.unidadeauditada" 
+						                       			class="form-control" disabled="disabled">
+						                       			<option value="">Selecione</option>
+						                       			<c:forEach items="${unidadeauditadaList}" var="unidadeauditada">
+						                       				<option value="${unidadeauditada}"
+			                                					<c:if test="${unidadeauditada eq demandaaudin.unidadeauditada}">selected="selected"</c:if>>
+			                                					${unidadeauditada}
+			                                				</option>
+						                       			</c:forEach>
+						                       		</select>
+						                       	</div>
+						                    </div>
+					                    </c:if>
 		                    		</div>
 		                            <br><br>
-		                        </form>    
-								
-								
-								<form class="form-inline" role="form" action="<c:url value="/demandas/audinfiocruz"/>" method="post">		                            
+		                        <%-- </form>    
+								<form class="form-inline" role="form" action="<c:url value="/demandas/audinfiocruz/registro"/>" method="post"> --%>		
 		                        	<div class="form-group">
 		                            	<div class="control-label">
 		                            		<label for="areatematica">Área Temática</label> 
 		                            	</div>
 		                            	<div class="control-label">
-		                              		<select id="areatematica" name="registrodemanda.areatematica" 
+		                              		<select id="areatematica" name="registrodemandaaudin.areatematica" 
+		                              			<c:if test="${demandaaudin.institucional eq 'Sim'}">disabled="disabled"</c:if>
 		                              			class="form-control" >
 		                              			<option value="">Selecione</option>
 		                                		<c:forEach items="${areatematicaList}" var="areatematica">
@@ -195,7 +183,8 @@
 		                            		<label for="unidade">Unidade</label>
 		                            	</div>
 		                            	<div class="control-label">
-		                              		<select id="unidade" name="registrodemanda.unidade" 
+		                              		<select id="unidade" name="registrodemandaaudin.unidade" 
+		                              			<c:if test="${demandaaudin.institucional eq 'Não'}">disabled="disabled"</c:if>
 		                              			class="form-control">
 		                              			<option value="">Selecione</option>
 		                                		<c:forEach items="${unidadeList}" var="unidade">
@@ -204,36 +193,36 @@
 		                              		</select>
 		                            	</div>
 		                          	</div>
+		                          	<div class="form-group">
+		                            	<div class="control-label">
+		                            		<label for="data_atualizacao">Data da Atualização*</label>
+		                            	</div>
+		                            	<div class="control-label">
+		                            		<input type="text" id="cal03" name="registrodemandaaudin.data_atualizacao" 
+		                            			class="form-control" >
+		                          		</div>
+		                        	</div>
 		                            <br><br>
 		                            <div class="control-label">
-		                            	<label for="assunto">Assunto</label>
+		                            	<label for="assunto">Assunto*</label>
 		                            </div>
-		                            <textarea id="assunto" class="textarea" rows="3" name="registrodemanda.assunto" ></textarea>		                           
+		                            <textarea id="assunto" class="textarea" rows="3" name="registrodemandaaudin.assunto" ></textarea>		                           
 		                            <br><br>
 		                            <div class="control-label">
-		                            	<label for="desdobramento">Recomendação(ões)</label>
+		                            	<label for="desdobramento">Recomendação(ões)*</label>
 		                            </div>
-									<textarea id="desdobramento" class="textarea" rows="3" name="registrodemanda.desdobramento" ></textarea>
+									<textarea id="desdobramento" class="textarea" rows="3" name="registrodemandaaudin.desdobramento" ></textarea>
 		                            <br><br>
 		                            <div class="control-label">
 		                            	<label for="demanda.providencia">Providência(s)</label>
 		                            </div>
-		                            <textarea class="textarea" rows="3" id="demanda.providencia" name="registrodemanda.providencia"></textarea>
+		                            <textarea class="textarea" rows="3" id="demanda.providencia" name="registrodemandaaudin.providencia"></textarea>
 		                            <br><br>
-		                            <div class="form-group">
-		                            	<div class="control-label">
-		                            		<label for="data_atualizacao">Data da Atualização</label>
-		                            	</div>
-		                            	<div class="control-label">
-		                            		<input type="text" id="cal01" name="registrodemanda.data_atualizacao" 
-		                            			class="form-control" >
-		                          		</div>
-		                        	</div>
 		                          	<div class="form-group">
 		                            	<div class="control-label">
-		                            		<label for="statusregistro">Status</label> 
+		                            		<label for="statusregistro">Status*</label> 
 		                            	</div>
-		                              	<select id="statusregistro" name="registrodemanda.statusregistro" 
+		                              	<select id="statusregistro" name="registrodemandaaudin.statusregistro" 
 		                              		class="form-control" >
 		                              		<option value="">Selecione</option>
 		                                	<c:forEach items="${statusregistroList}" var="statusregistro">
@@ -242,14 +231,13 @@
 		                              	</select>
 		                          	</div>
 		                            <br><br>
-			                        <div class="form-group">
-			                         	<div class="control-label">
-			                               	<button type="submit" id="consulta-busca" name="consulta-busca" class="btn btn-success">
-			                               		<span class="glyphicon glyphicon-ok"></span>
-			                        			 GRAVAR
-			                               	</button>
-			                            </div>
-			                        </div>
+			                        <div class="tab-content" align="right">
+			                        	<button type="submit" id="consulta-busca" name="consulta-busca" 
+			                        		class="btn btn-success">
+					                        <span class="glyphicon glyphicon-ok"></span>
+					                         GRAVAR
+					                	</button>
+									</div>
 		                            <br><br>
 								</form>
 							</div>

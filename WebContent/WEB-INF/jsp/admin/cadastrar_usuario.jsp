@@ -51,7 +51,7 @@
 	                            			<div class="control-label">
 	                                    		<input id="nome" type="text" required="required"
 	                                    			pattern="{3,60}" maxlength="60" 
-	                                    			class="form-controln" name="usuario.nome">
+	                                    			class="form-control" name="usuario.nome">
 	                                  		</div>
 	                        			</div>
 	                                 	<div class="form-group">
@@ -61,7 +61,7 @@
 	                            			<div class="control-label">
 	                                    		<input id="email" type="email" required="required" 
 	                                    			pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-	                                    			class="form-controlm" name="usuario.email">
+	                                    			class="form-control" name="usuario.email">
 	                                  		</div>
 	                        			</div>
 	                        			<div class="form-group">
@@ -71,7 +71,7 @@
 	                            			<div class="control-label">
 	                                    		<input id="senha" type="password" required="required"
 	                                    			pattern="[a-zA-Z0-9]{5,20}" maxlength="20" 
-	                                    			class="form-controlm" name="usuario.senha">
+	                                    			class="form-control" name="usuario.senha">
 	                                  		</div>
 	                        			</div>
 	                                 	<div class="form-group">
@@ -125,18 +125,13 @@
 	                              				</select>
 	                            			</div>
 	                          			</div>    
-	                                 	<br><br>
-	                                 	<div class="form-group">
-	                                		<div class="control-label">
-	                                			<button type="submit" id="consulta-busca" name="consulta-busca" 
-	                                				class="btn btn-success" value="Gravar">
-	                                				<span class="glyphicon glyphicon-ok"></span>
-	                                				GRAVAR
-	                                			</button>
-	                            			</div>
-	                             		</div>
-	                            		<br><br>
+	                            		<button type="submit" id="consulta-busca" name="consulta-busca" 
+	                                		class="btn btn-success" value="Gravar">
+	                                		<span class="glyphicon glyphicon-ok"></span>
+	                                		 GRAVAR
+	                                	</button>
 	                            	</div>	
+	                            	<br><br>
 	                            </form>
 							</div>
 						</div>

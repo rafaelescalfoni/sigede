@@ -39,17 +39,15 @@
 		                       	<div class="tab-content2">
 		                   			<h4>CADASTRO DE DEMANDAS ORIGINADAS DO TRIBUNAL DE CONTAS DA UNIÃO (TCU)</h4>
 		                   		</div>
-			                   	<form class="form-inline" role="form"
-			                   		action="<c:url value="/demandas/tcu"/>" 
-		                      		method="post">
-			                    	<!-- Select Basic -->
+			                   	<form class="form-inline" role="form" 
+			                   		action="<c:url value="/demandas/tcu"/>" method="post">
 			                        <div class="tab-content3">
 			                        	<div class="form-group">
 		                            		<div class="control-label">
 		                            			<label for="tipodemanda">Tipo de Demanda*</label>
 		                            		</div>
-		                              		<select id="tipodemanda" name="demandatcu.tipodemanda" 
-		                              			class="form-control" required="required">
+		                              		<select id="tipodemandaSelecionada" name="demandatcu.tipodemanda" 
+		                              			class="form-control" required="required" onchange="desabilitarBox1(this.value)">
 		                              			<option value="">Selecione</option>
 	                                			<c:forEach items="${tipodemandaList}" var="tipodemanda">
 	                                				<option value="${tipodemanda}">${tipodemanda}</option>
@@ -60,19 +58,19 @@
 		                            		<div class="control-label">
 		                            			<label for="num_demanda">Número</label> 
 		                            		</div>
-		                              		<input id="num_demanda" type="text" name="demandatcu.num_demanda" 
-		                              			class="form-control">
+		                              		<input id="num_demandaSelecionado" type="text" name="demandatcu.num_demanda" 
+		                              			class="form-control" onchange="desabilitarBox1(this.value)">
 		                            	</div>
 			                            <div class="form-group">
 		                            		<div class="control-label">
 		                            			<label for="ano">Ano</label>
 		                            		</div>
 		                            		<div class="control-label">
-		                              			<select id="ano" name="demandatcu.ano.id" 
-		                              				class="form-control">
+		                              			<select id="anoSelecionado" name="demandatcu.ano" 
+		                              				class="form-control" onchange="desabilitarBox1(this.value)">
 		                              				<option value="">Selecione</option>
 		                                			<c:forEach items="${anoList}" var="ano">
-		                                				<option value="${ano.id}">${ano.ano}</option>
+		                                				<option value="${ano}">${ano}</option>
 		                                			</c:forEach>
 		                              			</select>
 		                            		</div>
@@ -86,10 +84,10 @@
 		                            	</div>
 			                            <div class="form-group">
 		                            		<div class="control-label">
-		                            			<label for="remetente">Remetente*</label> 
+		                            			<label for="remetente">Remetente</label> 
 		                            		</div>
-		                              		<input id="remetente" type="text" name="demandatcu.remetente" 
-		                              			class="form-control" required="required">
+		                              		<input id="remetenteSelecionado" type="text" name="demandatcu.remetente" 
+		                              			class="form-control" onchange="desabilitarBox1(this.value)">
 		                            	</div>
 			                            <div class="form-group">
 			                            	<div class="control-label">
@@ -100,11 +98,11 @@
 			                            </div>
 			                            <div class="form-group">
 			                            	<div class="control-label">
-			                            		<label for="interessado">Interessado*</label>
+			                            		<label for="interessado">Interessado</label>
 			                            	</div>
 			                            	<div class="control-label">
 				                              	<input id="interessado" type="text" name="demandatcu.interessado" 
-		                              				class="form-control" required="required">
+		                              				class="form-control">
 			                            	</div>
 			                          	</div>
 			                          	<div class="form-group">
@@ -121,9 +119,9 @@
 		                            			<label for="naturezatcu">Natureza*</label>
 		                            		</div>
 		                            		<div class="control-label">
-		                              			<select id="naturezatcu" name="demandatcu.naturezatcu" 
-		                              				class="form-control" required="required">
-					                                <option value="">Selecione</option>
+		                              			<select id="naturezatcuSelecionado" name="demandatcu.naturezatcu" 
+		                              				class="form-control" required="required" onchange="desabilitarBox2(this.value)">
+		                              				<option value="">Selecione</option>
 					                                <c:forEach items="${naturezatcuList}" var="naturezatcu">
 					                                	<option value="${naturezatcu}">${naturezatcu}</option>
 	                              					</c:forEach>
@@ -134,19 +132,19 @@
 		                            		<div class="control-label">
 		                            			<label for="num_acordao">Acórdão nº</label> 
 		                            		</div>
-		                              		<input id="num_acordao" type="text" name="demandatcu.num_acordao" 
-		                              			class="form-control">
+		                              		<input id="num_acordaoSelecionado" type="text" name="demandatcu.num_acordao" 
+		                              			class="form-control" onchange="desabilitarBox2(this.value)">
 		                            	</div>
 		                            	<div class="form-group">
 		                            		<div class="control-label">
 		                            			<label for="anoacordao">Ano</label>
 		                            		</div>
 		                            		<div class="control-label">
-		                              			<select id="anoacordao" name="demandatcu.anoacordao.id" 
-		                              				class="form-control">
+		                              			<select id="anoacordaoSelecionado" name="demandatcu.anoacordao" 
+		                              				class="form-control" onchange="desabilitarBox2(this.value)">
 		                              				<option value="">Selecione</option>
-		                                			<c:forEach items="${anoList}" var="anoacordao">
-		                                				<option value="${ano.id}">${ano.ano}</option>
+		                                			<c:forEach items="${anoList}" var="ano">
+		                                				<option value="${ano}">${ano}</option>
 		                                			</c:forEach>
 		                              			</select>
 		                            		</div>
@@ -156,8 +154,8 @@
 		                            			<label for="colegiadoacordao">Colegiado</label>
 		                            		</div>
 		                            		<div class="control-label">
-		                              			<select id="colegiadoacordao" name="demandatcu.colegiadoacordao" 
-		                              				class="form-control">
+		                              			<select id="colegiadoacordaoSelecionado" name="demandatcu.colegiadoacordao" 
+		                              				class="form-control" onchange="desabilitarBox2(this.value)">
 					                                <option value="">Selecione</option>
 					                                <c:forEach items="${colegiadoacordaoList}" var="colegiadoacordao">
 					                                	<option value="${colegiadoacordao}">${colegiadoacordao}</option>
@@ -170,9 +168,9 @@
 		                            			<label for="data_sessaoacordao">Data da Sessão</label>
 		                            		</div>
 		                                	<input id="cal02" type="text" name="demandatcu.data_sessaoacordao" 
-		                                		class="form-control" maxlength="10">
+		                                		class="form-control" maxlength="10" onchange="desabilitarBox2(this.value)">
 		                            	</div>
-			                            <button type="submit" id="consulta-busca" name="consulta-busca" class="btn btn-success">
+			                            <button type="submit" id="gravarSelecionado" name="consulta-busca" class="btn btn-success" onchange="desabilitarBox2(this.value)">
 					                       	<span class="glyphicon glyphicon-ok"></span>
 					                       	 GRAVAR
 					                    </button>
@@ -204,6 +202,85 @@
 		            language: "pt-BR"
 		        });
 		      });
+		</script>
+		<script>
+			function desabilitarBox1(comboBoxValue){  
+				if(comboBoxValue == "Diário Oficial da União"){
+					document.getElementById("num_demandaSelecionado").disabled = false;
+					document.getElementById("anoSelecionado").disabled = true;
+					document.getElementById("remetenteSelecionado").disabled = true;
+				} else {
+					if(comboBoxValue == "E-Mail"){
+						document.getElementById("num_demandaSelecionado").disabled = true;
+						document.getElementById("anoSelecionado").disabled = true;
+						document.getElementById("remetenteSelecionado").disabled = false;
+					} else {
+						if(comboBoxValue == "Telefonema"){
+							document.getElementById("num_demandaSelecionado").disabled = true;
+							document.getElementById("anoSelecionado").disabled = true;
+							document.getElementById("remetenteSelecionado").disabled = false;
+						} else {
+							if(comboBoxValue == "Ofício"){
+								document.getElementById("num_demandaSelecionado").disabled = false;
+								document.getElementById("anoSelecionado").disabled = false;
+								document.getElementById("remetenteSelecionado").disabled = false;
+							} else {
+								if(comboBoxValue != "Diário Oficial da União" || comboBoxValue != "E-Mail" || comboBoxValue != "Telefonema"
+									|| comboBoxValue != "Ofício"){
+									document.getElementById("num_demandaSelecionado").disabled = false;
+									document.getElementById("anoSelecionado").disabled = false;
+									document.getElementById("remetenteSelecionado").disabled = false;
+								}
+							}
+						}
+					}
+				}
+			}
+			
+			function desabilitarBox2(comboBoxValue){  
+				if(comboBoxValue == "Acórdão"){
+					document.getElementById("num_acordaoSelecionado").disabled = false;
+					document.getElementById("anoacordaoSelecionado").disabled = false;
+					document.getElementById("colegiadoacordaoSelecionado").disabled = false;
+					document.getElementById("cal02").disabled = false;
+				} else {
+					if(comboBoxValue == "Audiência"){
+						document.getElementById("num_acordaoSelecionado").disabled = true;
+						document.getElementById("anoacordaoSelecionado").disabled = true;
+						document.getElementById("colegiadoacordaoSelecionado").disabled = true;
+						document.getElementById("cal02").disabled = true;
+					} else {
+						if(comboBoxValue == "Comunicação"){
+							document.getElementById("num_acordaoSelecionado").disabled = true;
+							document.getElementById("anoacordaoSelecionado").disabled = true;
+							document.getElementById("colegiadoacordaoSelecionado").disabled = true;
+							document.getElementById("cal02").disabled = true;
+						} else {
+							if(comboBoxValue == "Diligência"){
+								document.getElementById("num_acordaoSelecionado").disabled = true;
+								document.getElementById("anoacordaoSelecionado").disabled = true;
+								document.getElementById("colegiadoacordaoSelecionado").disabled = true;
+								document.getElementById("cal02").disabled = true;
+							} else {
+								if(comboBoxValue == "Oitiva"){
+									document.getElementById("num_acordaoSelecionado").disabled = true;
+									document.getElementById("anoacordaoSelecionado").disabled = true;
+									document.getElementById("colegiadoacordaoSelecionado").disabled = true;
+									document.getElementById("cal02").disabled = true;
+								} else {
+									if(comboBoxValue != "Acórdão" || comboBoxValue != "Audiência" || comboBoxValue != "Comunicação"
+										|| comboBoxValue != "Diligência" || comboBoxValue != "Oitiva"){
+										document.getElementById("num_acordaoSelecionado").disabled = false;
+										document.getElementById("anoacordaoSelecionado").disabled = false;
+										document.getElementById("colegiadoacordaoSelecionado").disabled = false;
+										document.getElementById("cal02").disabled = false;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 		</script>
 	</body>
 </html>

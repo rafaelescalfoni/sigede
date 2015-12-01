@@ -59,7 +59,7 @@ public class Usuario implements Serializable {
     
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "usuario_id")
-	private List<Demanda> demandaList;
+	private List<DemandaAudin> demandaaudinList;
 
     public Usuario() {
     }
@@ -145,16 +145,17 @@ public class Usuario implements Serializable {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}	
+
+	public List<DemandaAudin> getDemandaaudinList() {
+		return demandaaudinList;
 	}
 
-	public List<Demanda> getDemandaList() {
-		return demandaList;
+	public void setDemandaaudinList(List<DemandaAudin> demandaaudinList) {
+		this.demandaaudinList = demandaaudinList;
 	}
 
-	public void setDemandaList(List<Demanda> demandaList) {
-		this.demandaList = demandaList;
-	}
-
+	
 	@Override
     public int hashCode() {
         int hash = 0;

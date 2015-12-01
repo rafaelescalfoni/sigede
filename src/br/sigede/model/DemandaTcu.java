@@ -1,6 +1,8 @@
 package br.sigede.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,22 +11,26 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name = "demandatcu")
 @NamedQueries({
-    @NamedQuery(name = "DemandaTcu.findAll", query = "SELECT dt FROM DemandaTcu dt"),
+	@NamedQuery(name = "DemandaTcu.findAll", query = "SELECT dt FROM DemandaTcu dt"),
     @NamedQuery(name = "DemandaTcu.findById", query = "SELECT dt FROM DemandaTcu dt WHERE dt.id = :id"),
+    @NamedQuery(name = "DemandaTcu.findByData_cadastro", query = "SELECT dt FROM DemandaTcu dt WHERE dt.data_cadastro = :data_cadastro"),
+    @NamedQuery(name = "DemandaTcu.findByNum_demanda", query = "SELECT dt FROM DemandaTcu dt WHERE dt.num_demanda = :num_demanda"),
     @NamedQuery(name = "DemandaTcu.findByData_demanda", query = "SELECT dt FROM DemandaTcu dt WHERE dt.data_demanda = :data_demanda"),
     @NamedQuery(name = "DemandaTcu.findByRemetente", query = "SELECT dt FROM DemandaTcu dt WHERE dt.remetente = :remetente"),
     @NamedQuery(name = "DemandaTcu.findByProcessotcu", query = "SELECT dt FROM DemandaTcu dt WHERE dt.processotcu = :processotcu"),
     @NamedQuery(name = "DemandaTcu.findByInteressado", query = "SELECT dt FROM DemandaTcu dt WHERE dt.interessado = :interessado"),
+    @NamedQuery(name = "DemandaTcu.findByProcesso_interno", query = "SELECT dt FROM DemandaTcu dt WHERE dt.processo_interno = :processo_interno"),
     @NamedQuery(name = "DemandaTcu.findByNaturezatcu", query = "SELECT dt FROM DemandaTcu dt WHERE dt.naturezatcu = :naturezatcu"),
     @NamedQuery(name = "DemandaTcu.findByNum_acordao", query = "SELECT dt FROM DemandaTcu dt WHERE dt.num_acordao = :num_acordao"),
     @NamedQuery(name = "DemandaTcu.findByData_sessaoacordao", query = "SELECT dt FROM DemandaTcu dt WHERE dt.data_sessaoacordao = :data_sessaoacordao")})
@@ -34,7 +40,15 @@ public class DemandaTcu implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "data_demanda", updatable=false, nullable=false, length=30)
+    @Column(name = "data_cadastro", updatable=false, nullable=false, length=20)
+    private String data_cadastro;
+    @Column(name = "tipodemanda", nullable=false, length=30)
+    private String tipodemanda;
+    @Column(name = "num_demanda", length=10)
+    private int num_demanda;
+    @Column(name = "ano", length=4)
+    private String ano;
+    @Column(name = "data_demanda", nullable=false, length=20)
     private String data_demanda;
     @Column(name = "remetente", length=80)
     private String remetente;
@@ -42,7 +56,9 @@ public class DemandaTcu implements Serializable {
     private String processotcu;
     @Column(name = "interessado", length=80)
     private String interessado;
-    @Column(name = "naturezatcu", length=20)
+    @Column(name = "processo_interno", length=30)
+    private String processo_interno;
+    @Column(name = "naturezatcu", nullable=false, length=20)
     private String naturezatcu;
     @Column(name = "num_acordao", length=10)
     private int num_acordao;
@@ -50,12 +66,16 @@ public class DemandaTcu implements Serializable {
     private String anoacordao;
     @Column(name = "colegiadoacordao", length=20)
     private String colegiadoacordao;
-    @Column(name = "data_sessaoacordao", updatable=false, nullable=false, length=30)
+    @Column(name = "data_sessaoacordao", length=20)
     private String data_sessaoacordao;
     
-    @OneToOne(cascade=CascadeType.ALL, optional=false, fetch=FetchType.LAZY, orphanRemoval=true)  
-    @PrimaryKeyJoinColumn
-    private Demanda demanda;
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id", updatable=false, nullable=false)
+    private Usuario usuario;
+    
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "demandatcu_id")
+	private List<RegistroDemandaTcu> registrodemandatcuList = new ArrayList<RegistroDemandaTcu>();
     
     
     public DemandaTcu() {
@@ -65,9 +85,12 @@ public class DemandaTcu implements Serializable {
         this.id = id;
     }
     
-    public DemandaTcu(Long id, String data_demanda, String remetente, String processotcu, String interessado,
+    public DemandaTcu(Long id, String tipodemanda, int num_demanda, String ano, String data_demanda, String remetente, String processotcu, String interessado,
     		String naturezatcu, int num_acordao, String anoacordao, String colegiadoacordao, String data_sessaoacordao) {
         this.id = id;
+        this.tipodemanda = tipodemanda;
+        this.num_demanda = num_demanda;
+        this.ano = ano;
         this.data_demanda = data_demanda;
         this.remetente = remetente;
         this.processotcu = processotcu;
@@ -85,6 +108,38 @@ public class DemandaTcu implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getData_cadastro() {
+		return data_cadastro;
+	}
+
+	public void setData_cadastro(String data_cadastro) {
+		this.data_cadastro = data_cadastro;
+	}
+
+	public String getTipodemanda() {
+		return tipodemanda;
+	}
+
+	public void setTipodemanda(String tipodemanda) {
+		this.tipodemanda = tipodemanda;
+	}
+
+	public int getNum_demanda() {
+		return num_demanda;
+	}
+
+	public void setNum_demanda(int num_demanda) {
+		this.num_demanda = num_demanda;
+	}
+
+	public String getAno() {
+		return ano;
+	}
+
+	public void setAno(String ano) {
+		this.ano = ano;
 	}
 
 	public String getData_demanda() {
@@ -117,6 +172,14 @@ public class DemandaTcu implements Serializable {
 
 	public void setInteressado(String interessado) {
 		this.interessado = interessado;
+	}
+
+	public String getProcesso_interno() {
+		return processo_interno;
+	}
+
+	public void setProcesso_interno(String processo_interno) {
+		this.processo_interno = processo_interno;
 	}
 
 	public String getNaturezatcu() {
@@ -159,14 +222,23 @@ public class DemandaTcu implements Serializable {
 		this.data_sessaoacordao = data_sessaoacordao;
 	}
 
-	public Demanda getDemanda() {
-		return demanda;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setDemanda(Demanda demanda) {
-		this.demanda = demanda;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
+	public List<RegistroDemandaTcu> getRegistrodemandatcuList() {
+		return registrodemandatcuList;
+	}
+
+	public void setRegistrodemandatcuList(List<RegistroDemandaTcu> registrodemandatcuList) {
+		this.registrodemandatcuList = registrodemandatcuList;
+	}
+
+	
 	@Override
     public int hashCode() {
         int hash = 0;

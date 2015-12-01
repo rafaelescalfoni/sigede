@@ -40,7 +40,7 @@
 	                    			<h4>CADASTRO DE USUÁRIOS</h4>
 	                    		</div>
 	                      		<form class="form-inline" role="form" 
-	                      			 action="<c:url value="/suporte/usuario/${usuario.id }"/>"
+	                      			 action="<c:url value="/suporte/usuario/${usuario.id}"/>"
 	                      				method="POST">
 	                            	<!-- Select Basic -->
 	                             	<div class="tab-content3">

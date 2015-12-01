@@ -40,9 +40,8 @@
 		                   			<h4>CADASTRO DE DEMANDAS ORIGINADAS DO TRIBUNAL DE CONTAS DA UNIÃO (TCU)</h4>
 		                   		</div>
 			                   	<form class="form-inline" role="form"
-			                   		action="<c:url value="/demandas/tcu/registro"/>" 
+			                   		action="<c:url value="/demandas/tcu/registro/${demandatcu.id}"/>" 
 		                      		method="post">
-			                    	<!-- Select Basic -->
 			                        <div class="tab-content3">
 			                        	<div class="form-group">
 		                            		<div class="control-label">
@@ -71,13 +70,13 @@
 		                            			<label for="ano">Ano</label>
 		                            		</div>
 		                            		<div class="control-label">
-		                              			<select id="ano" name="demandatcu.ano.id" 
+		                              			<select id="ano" name="demandatcu.ano" 
 		                              				class="form-control">
 		                              				<option value="">Selecione</option>
 		                                			<c:forEach items="${anoList}" var="ano">
-		                                				<option value="${ano.id}"
-		                                					<c:if test="${ano.id eq demandatcu.ano.id}">selected="selected"</c:if>>
-		                                					${ano.ano}
+		                                				<option value="${ano}"
+		                                					<c:if test="${ano eq demandatcu.ano}">selected="selected"</c:if>>
+		                                					${ano}
 		                                				</option>
 		                                			</c:forEach>
 		                              			</select>
@@ -106,7 +105,7 @@
 			                            </div>
 			                            <div class="form-group">
 			                            	<div class="control-label">
-			                            		<label for="interessado">Interessado*</label>
+			                            		<label for="interessado">Interessado</label>
 			                            	</div>
 			                            	<div class="control-label">
 				                              	<input id="interessado" type="text" name="demandatcu.interessado" 
@@ -127,7 +126,7 @@
 		                            			<label for="naturezatcu">Natureza*</label>
 		                            		</div>
 		                            		<div class="control-label">
-		                              			<select id="naturezatcu" name="demandaaudin.naturezatcu" 
+		                              			<select id="naturezatcu" name="demandatcu.naturezatcu" 
 		                              				class="form-control">
 					                                <option value="">Selecione</option>
 					                                <c:forEach items="${naturezatcuList}" var="naturezatcu">
@@ -151,13 +150,13 @@
 		                            			<label for="anoacordao">Ano</label>
 		                            		</div>
 		                            		<div class="control-label">
-		                              			<select id="anoacordao" name="demandatcu.anoacordao.id" 
+		                              			<select id="anoacordao" name="demandatcu.anoacordao" 
 		                              				class="form-control">
 		                              				<option value="">Selecione</option>
-		                                			<c:forEach items="${anoList}" var="anoacordao">
-		                                				<option value="${ano.id}"
-		                                					<c:if test="${ano.id eq demandatcu.anoacordao.id}">selected="selected"</c:if>>
-		                                					${ano.ano}
+		                                			<c:forEach items="${anoList}" var="ano">
+		                                				<option value="${ano}"
+		                                					<c:if test="${ano eq demandatcu.anoacordao}">selected="selected"</c:if>>
+		                                					${ano}
 		                                				</option>
 		                                			</c:forEach>
 		                              			</select>

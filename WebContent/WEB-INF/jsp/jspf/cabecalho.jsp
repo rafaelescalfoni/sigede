@@ -16,7 +16,7 @@
 								src="<c:url value="/img/SIGEDE.png" />" alt="">
 						</a></li>
 						<li><a href="<c:url value="/demandas/audinfiocruz"/>">DEMANDAS </a></li>
-						<li><a href="<c:url value="/relatorios"/>">RELATÓRIOS </a></li>
+						<li><a href="<c:url value="/relatorios/areatematica"/>">RELATÓRIOS </a></li>
 						<li><c:if test="${userSession.usuario.perfil eq 'Administrador' }">
 								<a href="<c:url value="/admin/suporte/usuario"/>">SUPORTE </a>
 							</c:if></li>

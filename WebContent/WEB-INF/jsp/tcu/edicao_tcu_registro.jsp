@@ -40,9 +40,7 @@
 		                   			<h4>CADASTRO DE DEMANDAS ORIGINADAS DO TRIBUNAL DE CONTAS DA UNIÃO (TCU)</h4>
 		                   		</div>
 			                   	<form class="form-inline" role="form"
-			                   		action="<c:url value="/demandas/tcu/registro"/>" 
-		                      		method="post">
-			                    	<!-- Select Basic -->
+			                   		action="<c:url value="/demandas/tcu/registro/${registrodemandatcu.id}/update"/>" method="post">
 			                        <div class="tab-content3">
 			                        	<div class="form-group">
 		                            		<div class="control-label">
@@ -53,73 +51,83 @@
 		                              			<option value="">Selecione</option>
 	                                			<c:forEach items="${tipodemandaList}" var="tipodemanda">
 	                                				<option value="${tipodemanda}"
-	                                					<c:if test="${tipodemanda eq demandatcu.tipodemanda}">selected="selected"</c:if>>
+	                                					<c:if test="${tipodemanda eq registrodemandatcu.demandatcu.tipodemanda}">selected="selected"</c:if>>
 		                                				${tipodemanda}
 		                                			</option>
 	                                			</c:forEach>
 	                              			</select>
 		                            	</div>
-			                            <div class="form-group">
-		                            		<div class="control-label">
-		                            			<label for="num_demanda">Número</label> 
-		                            		</div>
-		                              		<input id="num_demanda" type="text" name="demandatcu.num_demanda" disabled="disabled"
-		                              			class="form-control" value="${demandatcu.num_demanda}">
-		                            	</div>
-			                            <div class="form-group">
-		                            		<div class="control-label">
-		                            			<label for="ano">Ano</label>
-		                            		</div>
-		                            		<div class="control-label">
-		                              			<select id="ano" name="demandatcu.ano.id" 
-		                              				class="form-control" disabled="disabled">
-		                              				<option value="">Selecione</option>
-		                                			<c:forEach items="${anoList}" var="ano">
-		                                				<option value="${ano.id}"
-		                                					<c:if test="${ano.id eq demandatcu.ano.id}">selected="selected"</c:if>>
-		                                					${ano.ano}
-		                                				</option>
-		                                			</c:forEach>
-		                              			</select>
-		                            		</div>
-		                          		</div>
+				                       	<c:if test="${demandatcu.tipodemanda ne 'E-Mail'}">
+				                            <c:if test="${demandatcu.tipodemanda ne 'Telefonema'}">
+					                            <div class="form-group">
+				                            		<div class="control-label">
+				                            			<label for="num_demanda">Número</label> 
+				                            		</div>
+				                              		<input id="num_demanda" type="text" name="demandatcu.num_demanda" disabled="disabled"
+				                              			class="form-control" value="${registrodemandatcu.demandatcu.num_demanda}">
+				                            	</div>
+				                            	<c:if test="${demandatcu.tipodemanda ne 'Diário Oficial da União'}">
+						                            <div class="form-group">
+					                            		<div class="control-label">
+					                            			<label for="ano">Ano</label>
+					                            		</div>
+					                            		<div class="control-label">
+					                              			<select id="ano" name="demandatcu.ano" 
+					                              				class="form-control" disabled="disabled">
+					                              				<option value="">Selecione</option>
+					                                			<c:forEach items="${anoList}" var="ano">
+					                                				<option value="${ano}"
+					                                					<c:if test="${ano eq registrodemandatcu.demandatcu.ano}">selected="selected"</c:if>>
+					                                					${ano}
+					                                				</option>
+					                                			</c:forEach>
+					                              			</select>
+					                            		</div>
+					                          		</div>
+				                          		</c:if>
+				                          	</c:if>
+				                       	</c:if>
 		                          		<div class="form-group">
 		                            		<div class="control-label">
 		                            			<label for="data_demanda">Data</label>
 		                            		</div>
 		                                	<input id="cal01" type="text" name="demandatcu.data_demanda" disabled="disabled"
-		                                		class="form-control" maxlength="10" value="${demandatcu.data_demanda}">
+		                                		class="form-control" maxlength="10" value="${registrodemandatcu.demandatcu.data_demanda}">
 		                            	</div>
-			                            <div class="form-group">
-		                            		<div class="control-label">
-		                            			<label for="remetente">Remetente</label> 
-		                            		</div>
-		                              		<input id="remetente" type="text" name="demandatcu.remetente" disabled="disabled"
-		                              			class="form-control" value="${demandatcu.remetente}">
-		                            	</div>
+		                            	<c:if test="${demandatcu.tipodemanda ne 'Diário Oficial da União'}">
+				                            <div class="form-group">
+			                            		<div class="control-label">
+			                            			<label for="remetente">Remetente</label> 
+			                            		</div>
+			                              		<input id="remetente" type="text" name="demandatcu.remetente" disabled="disabled"
+			                              			class="form-control" value="${registrodemandatcu.demandatcu.remetente}">
+			                            	</div>
+		                            	</c:if>
 			                            <div class="form-group">
 			                            	<div class="control-label">
 			                            		<label for="processotcu">Processo TC</label> 
 			                            	</div>
 			                              	<input id="processotcu" type="text" name="demandatcu.processotcu" disabled="disabled"
-		                              			class="form-control" value="${demandatcu.processotcu}">
+		                              			class="form-control" value="${registrodemandatcu.demandatcu.processotcu}">
 			                            </div>
-			                            <div class="form-group">
-			                            	<div class="control-label">
-			                            		<label for="interessado">Interessado*</label>
-			                            	</div>
-			                            	<div class="control-label">
-				                              	<input id="interessado" type="text" name="demandatcu.interessado" disabled="disabled"
-		                              				class="form-control" value="${demandatcu.interessado}">
-			                            	</div>
-			                          	</div>
+			                            <c:if test="${demandatcu.tipodemanda ne 'Diário Oficial da União'}">
+				                            <div class="form-group">
+				                            	<div class="control-label">
+				                            		<label for="interessado">Interessado</label>
+				                            	</div>
+				                            	<div class="control-label">
+					                              	<input id="interessado" type="text" name="demandatcu.interessado" disabled="disabled"
+			                              				class="form-control" value="${registrodemandatcu.demandatcu.interessado}">
+				                            	</div>
+				                          	</div>
+			                          	</c:if>
 			                          	<div class="form-group">
 				                            <div class="control-label">
 				                            	<label for="processo_interno">Processo FIOCRUZ</label>
 				                            </div> 
 				                            <div class="control-label">
 				                                <input id="processo_interno" type="text" name="demandatcu.processo_interno" disabled="disabled"
-		                              				class="form-control" value="${demandatcu.processo_interno}">
+		                              				class="form-control" value="${registrodemandatcu.demandatcu.processo_interno}">
 				                            </div>
 				                        </div>
 			                        	<div class="form-group">
@@ -132,65 +140,75 @@
 					                                <option value="">Selecione</option>
 					                                <c:forEach items="${naturezatcuList}" var="naturezatcu">
 					                                	<option value="${naturezatcu}"
-		                                					<c:if test="${naturezatcu eq demandatcu.naturezatcu}">selected="selected"</c:if>>
+		                                					<c:if test="${naturezatcu eq registrodemandatcu.demandatcu.naturezatcu}">selected="selected"</c:if>>
 		                                					${naturezatcu}
 		                                				</option>
 	                              					</c:forEach>
 		                              			</select>
 		                            		</div>
 		                          		</div>
-		                          		<div class="form-group">
-		                            		<div class="control-label">
-		                            			<label for="num_acordao">Acórdão nº</label> 
-		                            		</div>
-		                              		<input id="num_acordao" type="text" name="demandatcu.num_acordao" disabled="disabled"
-		                              			class="form-control" value="${demandatcu.num_acordao}">
-		                            	</div>
-		                            	<div class="form-group">
-		                            		<div class="control-label">
-		                            			<label for="anoacordao">Ano</label>
-		                            		</div>
-		                            		<div class="control-label">
-		                              			<select id="anoacordao" name="demandatcu.anoacordao.id" 
-		                              				class="form-control" disabled="disabled">
-		                              				<option value="">Selecione</option>
-		                                			<c:forEach items="${anoList}" var="anoacordao">
-		                                				<option value="${ano.id}"
-		                                					<c:if test="${ano.id eq demandatcu.anoacordao.id}">selected="selected"</c:if>>
-		                                					${ano.ano}
-		                                				</option>
-		                                			</c:forEach>
-		                              			</select>
-		                            		</div>
-		                          		</div>
-		                          		<div class="form-group">
-		                            		<div class="control-label">
-		                            			<label for="colegiadoacordao">Colegiado</label>
-		                            		</div>
-		                            		<div class="control-label">
-		                              			<select id="colegiadoacordao" name="demandatcu.colegiadoacordao" 
-		                              				class="form-control" disabled="disabled">
-					                                <option value="">Selecione</option>
-					                                <c:forEach items="${colegiadoacordaoList}" var="colegiadoacordao">
-					                                	<option value="${colegiadoacordao}"
-		                                					<c:if test="${colegiadoacordao eq demandatcu.colegiadoacordao}">selected="selected"</c:if>>
-		                                					${colegiadoacordao}
-		                                				</option>
-	                              					</c:forEach>
-		                              			</select>
-		                            		</div>
-		                          		</div>
-		                            	<div class="form-group">
-		                            		<div class="control-label">
-		                            			<label for="data_sessaoacordao">Data da Sessão</label>
-		                            		</div>
-		                                	<input id="cal02" type="text" name="demandatcu.data_sessaoacordao" disabled="disabled"
-		                                		class="form-control" maxlength="10" value="${demandatcu.data_sessaoacordao}">
-		                            	</div>
-			                            <button type="button" class="btn btn-info">
-			                            	<span class="glyphicon glyphicon-pencil"></span>
-			                            	 EDITAR
-			                            </button> 
+		                          		<c:if test="${demandatcu.naturezatcu eq 'Acórdão'}">
+			                          		<div class="form-group">
+			                            		<div class="control-label">
+			                            			<label for="num_acordao">Acórdão nº</label> 
+			                            		</div>
+			                              		<input id="num_acordao" type="text" name="demandatcu.num_acordao" disabled="disabled"
+			                              			class="form-control" value="${registrodemandatcu.demandatcu.num_acordao}">
+			                            	</div>
+			                            	<div class="form-group">
+			                            		<div class="control-label">
+			                            			<label for="anoacordao">Ano</label>
+			                            		</div>
+			                            		<div class="control-label">
+			                              			<select id="anoacordao" name="demandatcu.anoacordao" 
+			                              				class="form-control" disabled="disabled">
+			                              				<option value="">Selecione</option>
+			                                			<c:forEach items="${anoList}" var="ano">
+			                                				<option value="${ano}"
+			                                					<c:if test="${ano eq registrodemandatcu.demandatcu.anoacordao}">selected="selected"</c:if>>
+			                                					${ano}
+			                                				</option>
+			                                			</c:forEach>
+			                              			</select>
+			                            		</div>
+			                          		</div>
+			                          		<div class="form-group">
+			                            		<div class="control-label">
+			                            			<label for="colegiadoacordao">Colegiado</label>
+			                            		</div>
+			                            		<div class="control-label">
+			                              			<select id="colegiadoacordao" name="demandatcu.colegiadoacordao" 
+			                              				class="form-control" disabled="disabled">
+						                                <option value="">Selecione</option>
+						                                <c:forEach items="${colegiadoacordaoList}" var="colegiadoacordao">
+						                                	<option value="${colegiadoacordao}"
+			                                					<c:if test="${colegiadoacordao eq registrodemandatcu.demandatcu.colegiadoacordao}">selected="selected"</c:if>>
+			                                					${colegiadoacordao}
+			                                				</option>
+		                              					</c:forEach>
+			                              			</select>
+			                            		</div>
+			                          		</div>
+			                            	<div class="form-group">
+			                            		<div class="control-label">
+			                            			<label for="data_sessaoacordao">Data da Sessão</label>
+			                            		</div>
+			                                	<input id="cal02" type="text" name="demandatcu.data_sessaoacordao" disabled="disabled"
+			                                		class="form-control" maxlength="10" value="${registrodemandatcu.demandatcu.data_sessaoacordao}">
+			                            	</div>
+		                            	</c:if>
+			                            <c:if test="${userSession.usuario.perfil eq 'Administrador' }">
+			                                <button type="button" class="btn btn-info">
+				                            	<span class="glyphicon glyphicon-pencil"></span>
+				                            	 EDITAR
+				                            </button> 
+		                                </c:if>
+		                          		<c:if test="${userSession.usuario.perfil eq 'Usuário Avançado' }">
+			                                <button type="button" class="btn btn-info">
+				                            	<span class="glyphicon glyphicon-pencil"></span>
+				                            	 EDITAR
+				                            </button> 
+		                                </c:if>
 			                    	</div>
 			                        <br><br>
 			                        <div class="form-group">
@@ -198,13 +216,13 @@
 		                            		<label for="areatematica">Área Temática*</label> 
 		                            	</div>
 		                            	<div class="control-label">
-		                              		<select id="areatematica" name="registrodemandatcu.areatematica.id" 
+		                              		<select id="areatematica" name="registrodemandatcu.areatematica" 
 		                              			class="form-control" required="required">
 		                              			<option value="">Selecione</option>
 		                                		<c:forEach items="${areatematicaList}" var="areatematica">
-		                                			<option value="${areatematica.id}"
-		                                				<c:if test="${areatematica.id eq registrodemandatcu.areatematica.id}">selected="selected"</c:if>>
-		                                				${areatematica.nome}
+		                                			<option value="${areatematica}"
+		                                				<c:if test="${areatematica eq registrodemandatcu.areatematica}">selected="selected"</c:if>>
+		                                				${areatematica}
 		                                			</option>
 		                                		</c:forEach>
 		                              		</select>
@@ -215,52 +233,52 @@
 		                            		<label for="unidade">Unidade*</label>
 		                            	</div>
 		                            	<div class="control-label">
-		                              		<select id="unidade" name="registrodemandatcu.unidade.id" 
+		                              		<select id="unidade" name="registrodemandatcu.unidade" 
 		                              			class="form-control" required="required">
 		                              			<option value="">Selecione</option>
 		                                		<c:forEach items="${unidadeList}" var="unidade">
-		                                			<option value="${unidade.id}"
-		                                				<c:if test="${unidade.id eq registrodemandatcu.unidade.id}">selected="selected"</c:if>>
-		                                				${unidade.nome}
+		                                			<option value="${unidade}"
+		                                				<c:if test="${unidade eq registrodemandatcu.unidade}">selected="selected"</c:if>>
+		                                				${unidade}
 		                                			</option>
 		                                		</c:forEach>
 		                              		</select>
 		                            	</div>
 		                          	</div>
-		                            <br><br>
-		                            <div class="control-label">
-		                            	<label for="assunto">Assunto*</label>
-		                            </div>
-		                            <textarea id="assunto" class="textarea" rows="3" name="registrodemandatcu.assunto" 
-		                            	required="required" >value="${registrodemandatcu.assunto}"</textarea>		                           
-		                            <br><br>
-		                            <div class="control-label">
-		                            	<label for="desdobramento">Recomendação(ões)*</label>
-		                            </div>
-									<textarea id="desdobramento" class="textarea" rows="3" name="registrodemandatcu.desdobramento" 
-										required="required">value="${registrodemandatcu.desdobramento}"</textarea>
-		                            <br><br>
-		                            <div class="control-label">
-		                            	<label for="providencia">Providência(s)</label>
-		                            </div>
-		                            <textarea class="textarea" rows="3" id="providencia" name="registrodemandatcu.providencia">
-		                            	value="${registrodemandatcu.providencia}"</textarea>
-		                            <br><br>
-		                            <div class="form-group">
+		                          	<div class="form-group">
 		                            	<div class="control-label">
 		                            		<label for="data_atualizacao">Data da Atualização*</label>
 		                            	</div>
 		                            	<div class="control-label">
-		                            		<input type="text" id="cal01" name="registrodemandatcu.data_atualizacao" 
+		                            		<input type="text" id="cal03" name="registrodemandatcu.data_atualizacao" 
 		                            			class="form-control" required="required" value="${registrodemandatcu.data_atualizacao}">
 		                          		</div>
 		                        	</div>
+		                            <br><br>
+		                            <div class="control-label">
+		                            	<label for="assunto">Assunto*</label>
+		                            </div>
+		                            <textarea id="assunto" class="textarea" rows="3" required="required" 
+		                            	name="registrodemandatcu.assunto">${registrodemandatcu.assunto}</textarea>		                           
+		                            <br><br>
+		                            <div class="control-label">
+		                            	<label for="desdobramento">Recomendação(ões)*</label>
+		                            </div>
+									<textarea id="desdobramento" class="textarea" rows="3" required="required"
+										name="registrodemandatcu.desdobramento">${registrodemandatcu.desdobramento}</textarea>
+		                            <br><br>
+		                            <div class="control-label">
+		                            	<label for="providencia">Providência(s)</label>
+		                            </div>
+		                            <textarea id="providencia" class="textarea" rows="3"   
+		                            	name="registrodemandatcu.providencia">${registrodemandatcu.providencia}</textarea>
+		                            <br><br>
 		                          	<div class="form-group">
 		                            	<div class="control-label">
 		                            		<label for="statusregistro">Status*</label> 
 		                            	</div>
-		                              	<select id="statusregistro" name="registrodemandatcu.statusregistro" 
-		                              		class="form-control" required="required">
+		                              	<select id="statusregistro" class="form-control" 
+		                              		name="registrodemandatcu.statusregistro" required="required">
 		                              		<option value="">Selecione</option>
 		                                	<c:forEach items="${statusregistroList}" var="statusregistro">
 		                                		<option value="${statusregistro}"
@@ -271,14 +289,34 @@
 		                              	</select>
 		                          	</div>
 			                        <br><br>
-			                        <div class="form-group">
-			                        	<div class="control-label">
-			                                <button type="submit" id="consulta-busca" name="consulta-busca" class="btn btn-success">
-					                        	<span class="glyphicon glyphicon-ok"></span>
-					                        	 GRAVAR
-					                        </button>
+			                        <c:if test="${userSession.usuario.perfil eq 'Administrador' }">
+			                            <div class="form-group">
+			                            	<div class="control-label">
+				                                	<button type="submit" id="editar" name="_method" class="btn btn-success" value="PUT">
+				                                		<span class="glyphicon glyphicon-ok"></span>
+				                                		 GRAVAR
+				                                	</button>
+				                                	<button type="submit" id="excluir" name="_method" class="btn btn-danger" value="DELETE">
+				                                		<span class="glyphicon glyphicon-remove"></span>
+				                                		 EXCLUIR
+				                                	</button>
+			                            	</div>
 			                            </div>
-									</div>
+		                            </c:if>
+		                            <c:if test="${userSession.usuario.perfil eq 'Usuário Avançado' }">
+			                            <div class="form-group">
+			                            	<div class="control-label">
+				                                	<button type="submit" id="editar" name="_method" class="btn btn-success" value="PUT">
+				                                		<span class="glyphicon glyphicon-ok"></span>
+				                                		 GRAVAR
+				                                	</button>
+				                                	<button type="submit" id="excluir" name="_method" class="btn btn-danger" value="DELETE">
+				                                		<span class="glyphicon glyphicon-remove"></span>
+				                                		 EXCLUIR
+				                                	</button>
+			                            	</div>
+			                            </div>
+		                            </c:if>
 			                        <br><br>
 								</form>
 							</div>
