@@ -45,7 +45,7 @@
 	                       		<div class="tab-content2">
 	                   				<h4>CONSULTA POR DEMANDAS ORIGINADAS DO TRIBUNAL DE CONTAS DA UNIÃO (TCU)</h4>
 	                   			</div>
-	                   			<form action="<c:url value="/demandas/tcu/pesquisa" />" method="get">
+	                   			<form action="<c:url value="/demanda/tcu/pesquisa" />" method="get">
 									<div class="input-group h2">
 										<input name="palavraChave" class="form-control" id="search" type="text" placeholder="Pesquisar...">
 											<span class="input-group-btn">

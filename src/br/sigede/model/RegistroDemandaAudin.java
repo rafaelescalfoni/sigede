@@ -2,8 +2,10 @@ package br.sigede.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +30,7 @@ public class RegistroDemandaAudin implements Serializable {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable=false, nullable=false)
     private Long id;
     @Column(name = "areatematica", length=40)
     private String areatematica;
@@ -45,8 +47,8 @@ public class RegistroDemandaAudin implements Serializable {
     @Column(name = "statusregistro", nullable=false, length=40)
     private String statusregistro;
     
-    @ManyToOne
-    @JoinColumn(name = "demandaaudin_id", referencedColumnName = "id", updatable=false, nullable=false)
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn(name = "demandaaudin_id", referencedColumnName = "id", nullable=false)
     private DemandaAudin demandaaudin;
     
     

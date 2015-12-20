@@ -46,27 +46,26 @@
 	                             	<div class="tab-content3">
 	                        			<div class="form-group">
 	                            			<div class="control-label">
-	                                    		<label for="nome">Nome</label>
+	                                    		<label for="nome">Nome*</label>
 	                            			</div> 
 	                            			<div class="control-label">
-	                                    		<input id="nome" type="text" required="required"
-	                                    			pattern="{3,60}" maxlength="60" 
-	                                    			class="form-control" name="usuario.nome">
+	                                    		<input id="nome" type="text" name="usuario.nome" maxlength="60" 
+	                                    			class="form-controlm" required="required" >
 	                                  		</div>
 	                        			</div>
 	                                 	<div class="form-group">
 	                            			<div class="control-label">
-	                                    		<label for="email">E-mail</label>
+	                                    		<label for="email">E-mail*</label>
 	                            			</div> 
 	                            			<div class="control-label">
 	                                    		<input id="email" type="email" required="required" 
 	                                    			pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-	                                    			class="form-control" name="usuario.email">
+	                                    			class="form-controlm" name="usuario.email">
 	                                  		</div>
 	                        			</div>
 	                        			<div class="form-group">
 	                            			<div class="control-label">
-	                                    		<label for="senha">Senha</label>
+	                                    		<label for="senha">Senha*</label>
 	                            			</div> 
 	                            			<div class="control-label">
 	                                    		<input id="senha" type="password" required="required"
@@ -76,7 +75,7 @@
 	                        			</div>
 	                                 	<div class="form-group">
 	                            			<div class="control-label">
-	                                    		<label for="telefone">Telefone</label>
+	                                    		<label for="telefone">Telefone*</label>
 	                            			</div> 
 	                            			<div class="control-label">
 	                                    		<input id="telefone" type="text" required="required" 
@@ -85,7 +84,7 @@
 	                        			</div>
 	                        			<div class="form-group">
 	                            			<div class="control-label">
-	                            				<label for="area">Área</label> 
+	                            				<label for="area">Área*</label> 
 	                            			</div>
 	                            			<div class="control-label">
 	                              				<select id="area"  name="usuario.area" 
@@ -99,7 +98,7 @@
 	                          			</div>
 	                        			<div class="form-group">
 	                            			<div class="control-label">
-	                            				<label for="perfil">Perfil</label>
+	                            				<label for="perfil">Perfil*</label>
 	                            			</div>
 	                            			<div class="control-label">
 	                              				<select id="perfil" name="usuario.perfil" 
@@ -113,7 +112,7 @@
 	                          			</div>
 	                             		<div class="form-group">
 	                            			<div class="control-label">
-	                            				<label for="status">Status</label>
+	                            				<label for="status">Status*</label>
 	                            			</div>
 	                            			<div class="control-label">
 	                              				<select id="status" name="usuario.status"
@@ -125,11 +124,16 @@
 	                              				</select>
 	                            			</div>
 	                          			</div>    
-	                            		<button type="submit" id="consulta-busca" name="consulta-busca" 
-	                                		class="btn btn-success" value="Gravar">
-	                                		<span class="glyphicon glyphicon-ok"></span>
-	                                		 GRAVAR
-	                                	</button>
+	                          			<br><br>
+	                          			<div class="tab-content" align="right">
+		                          			<div class="control-label">
+			                            		<button type="submit" id="consulta-busca" name="consulta-busca" 
+			                                		class="btn btn-success" value="Gravar">
+			                                		<span class="glyphicon glyphicon-ok"></span>
+			                                		 GRAVAR
+			                                	</button>
+		                                	</div>
+	                                	</div>
 	                            	</div>	
 	                            	<br><br>
 	                            </form>

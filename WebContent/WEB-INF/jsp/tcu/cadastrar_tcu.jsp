@@ -46,28 +46,32 @@
 		                            		<div class="control-label">
 		                            			<label for="tipodemanda">Tipo de Demanda*</label>
 		                            		</div>
-		                              		<select id="tipodemandaSelecionada" name="demandatcu.tipodemanda" 
-		                              			class="form-control" required="required" onchange="desabilitarBox1(this.value)">
-		                              			<option value="">Selecione</option>
-	                                			<c:forEach items="${tipodemandaList}" var="tipodemanda">
-	                                				<option value="${tipodemanda}">${tipodemanda}</option>
-	                                			</c:forEach>
-	                              			</select>
+		                            		<div class="control-label">
+			                              		<select id="tipodemandaSelecionada" name="demandatcu.tipodemanda" 
+			                              			class="form-control" required="required" onchange="desabilitarBox1(this.value, 'comboTipoDemanda')">
+			                              			<option value="">Selecione</option>
+		                                			<c:forEach items="${tipodemandaList}" var="tipodemanda">
+		                                				<option value="${tipodemanda}">${tipodemanda}</option>
+		                                			</c:forEach>
+		                              			</select>
+	                              			</div>
 		                            	</div>
 			                            <div class="form-group">
 		                            		<div class="control-label">
-		                            			<label for="num_demanda">Número</label> 
+		                            			<label for="num_demanda">Número*</label> 
 		                            		</div>
-		                              		<input id="num_demandaSelecionado" type="text" name="demandatcu.num_demanda" 
-		                              			class="form-control" onchange="desabilitarBox1(this.value)">
+		                            		<div class="control-label">
+			                              		<input id="num_demandaSelecionado" type="text" class="form-control" name="demandatcu.num_demanda" 
+			                              			onchange="desabilitarBox1(this.value, 'comboNumDemanda')" required="required">
+		                              		</div>
 		                            	</div>
 			                            <div class="form-group">
 		                            		<div class="control-label">
-		                            			<label for="ano">Ano</label>
+		                            			<label for="ano">Ano*</label>
 		                            		</div>
 		                            		<div class="control-label">
 		                              			<select id="anoSelecionado" name="demandatcu.ano" 
-		                              				class="form-control" onchange="desabilitarBox1(this.value)">
+		                              				class="form-control" onchange="desabilitarBox1(this.value, 'comboAno')" required="required">
 		                              				<option value="">Selecione</option>
 		                                			<c:forEach items="${anoList}" var="ano">
 		                                				<option value="${ano}">${ano}</option>
@@ -79,30 +83,36 @@
 		                            		<div class="control-label">
 		                            			<label for="data_demanda">Data*</label>
 		                            		</div>
-		                                	<input id="cal01" type="text" name="demandatcu.data_demanda" 
-		                                		class="form-control" maxlength="10" required="required">
+		                            		<div class="control-label">
+			                                	<input id="cal01" type="text" name="demandatcu.data_demanda" 
+			                                		class="form-control" maxlength="10" required="required">
+		                                	</div>
 		                            	</div>
 			                            <div class="form-group">
 		                            		<div class="control-label">
-		                            			<label for="remetente">Remetente</label> 
+		                            			<label for="remetente">Remetente*</label> 
 		                            		</div>
-		                              		<input id="remetenteSelecionado" type="text" name="demandatcu.remetente" 
-		                              			class="form-control" onchange="desabilitarBox1(this.value)">
+		                            		<div class="control-label">
+			                              		<input id="remetenteSelecionado" type="text" name="demandatcu.remetente" class="form-controln"  
+			                              			onchange="desabilitarBox1(this.value, 'comboRemetente')" required="required">
+		                              		</div>
 		                            	</div>
 			                            <div class="form-group">
 			                            	<div class="control-label">
 			                            		<label for="processotcu">Processo TC</label> 
 			                            	</div>
-			                              	<input id="processotcu" type="text" name="demandatcu.processotcu" 
-		                              			class="form-control">
+			                            	<div class="control-label">
+				                              	<input id="processotcu" type="text" name="demandatcu.processotcu" 
+			                              			class="form-control">
+		                              		</div>
 			                            </div>
 			                            <div class="form-group">
 			                            	<div class="control-label">
-			                            		<label for="interessado">Interessado</label>
+			                            		<label for="interessado">Interessado*</label>
 			                            	</div>
 			                            	<div class="control-label">
 				                              	<input id="interessado" type="text" name="demandatcu.interessado" 
-		                              				class="form-control">
+		                              				class="form-controln" required="required">
 			                            	</div>
 			                          	</div>
 			                          	<div class="form-group">
@@ -111,7 +121,7 @@
 				                            </div> 
 				                            <div class="control-label">
 				                                <input id="processo_interno" type="text" name="demandatcu.processo_interno" 
-		                              				class="form-control">
+		                              				class="form-controlm">
 				                            </div>
 				                        </div>
 			                        	<div class="form-group">
@@ -119,8 +129,8 @@
 		                            			<label for="naturezatcu">Natureza*</label>
 		                            		</div>
 		                            		<div class="control-label">
-		                              			<select id="naturezatcuSelecionado" name="demandatcu.naturezatcu" 
-		                              				class="form-control" required="required" onchange="desabilitarBox2(this.value)">
+		                              			<select id="naturezatcuSelecionado" name="demandatcu.naturezatcu" required="required"
+		                              				class="form-control" onchange="desabilitarBox2(this.value, 'comboNatureza')">
 		                              				<option value="">Selecione</option>
 					                                <c:forEach items="${naturezatcuList}" var="naturezatcu">
 					                                	<option value="${naturezatcu}">${naturezatcu}</option>
@@ -130,18 +140,20 @@
 		                          		</div>
 		                          		<div class="form-group">
 		                            		<div class="control-label">
-		                            			<label for="num_acordao">Acórdão nº</label> 
+		                            			<label for="num_acordao">Acórdão nº*</label> 
 		                            		</div>
-		                              		<input id="num_acordaoSelecionado" type="text" name="demandatcu.num_acordao" 
-		                              			class="form-control" onchange="desabilitarBox2(this.value)">
+		                            		<div class="control-label">
+			                              		<input id="num_acordaoSelecionado" type="text" name="demandatcu.num_acordao" class="form-control" 
+			                              			onchange="desabilitarBox2(this.value, 'comboNumAcordao')" required="required">
+		                              		</div>
 		                            	</div>
 		                            	<div class="form-group">
 		                            		<div class="control-label">
-		                            			<label for="anoacordao">Ano</label>
+		                            			<label for="anoacordao">Ano*</label>
 		                            		</div>
 		                            		<div class="control-label">
-		                              			<select id="anoacordaoSelecionado" name="demandatcu.anoacordao" 
-		                              				class="form-control" onchange="desabilitarBox2(this.value)">
+		                              			<select id="anoacordaoSelecionado" name="demandatcu.anoacordao" class="form-control" 
+		                              				onchange="desabilitarBox2(this.value, 'comboAnoAcordao')" required="required">
 		                              				<option value="">Selecione</option>
 		                                			<c:forEach items="${anoList}" var="ano">
 		                                				<option value="${ano}">${ano}</option>
@@ -151,11 +163,11 @@
 		                          		</div>
 		                          		<div class="form-group">
 		                            		<div class="control-label">
-		                            			<label for="colegiadoacordao">Colegiado</label>
+		                            			<label for="colegiadoacordao">Colegiado*</label>
 		                            		</div>
 		                            		<div class="control-label">
-		                              			<select id="colegiadoacordaoSelecionado" name="demandatcu.colegiadoacordao" 
-		                              				class="form-control" onchange="desabilitarBox2(this.value)">
+		                              			<select id="colegiadoacordaoSelecionado" name="demandatcu.colegiadoacordao" class="form-control" 
+		                              				onchange="desabilitarBox2(this.value, 'comboColegiado')" required="required">
 					                                <option value="">Selecione</option>
 					                                <c:forEach items="${colegiadoacordaoList}" var="colegiadoacordao">
 					                                	<option value="${colegiadoacordao}">${colegiadoacordao}</option>
@@ -165,15 +177,21 @@
 		                          		</div>
 		                            	<div class="form-group">
 		                            		<div class="control-label">
-		                            			<label for="data_sessaoacordao">Data da Sessão</label>
+		                            			<label for="data_sessaoacordao">Data da Sessão*</label>
 		                            		</div>
-		                                	<input id="cal02" type="text" name="demandatcu.data_sessaoacordao" 
-		                                		class="form-control" maxlength="10" onchange="desabilitarBox2(this.value)">
+		                            		<div class="control-label">
+			                                	<input id="cal02" type="text" name="demandatcu.data_sessaoacordao" class="form-control" 
+			                                		maxlength="10" onchange="desabilitarBox2(this.value, 'comboDataSessao')" required="required">
+		                                	</div>
 		                            	</div>
-			                            <button type="submit" id="gravarSelecionado" name="consulta-busca" class="btn btn-success" onchange="desabilitarBox2(this.value)">
-					                       	<span class="glyphicon glyphicon-ok"></span>
-					                       	 GRAVAR
-					                    </button>
+		                            	<div class="tab-content" align="right">
+		                            		<div class="control-label">
+					                            <button type="submit" id="gravarSelecionado" name="consulta-busca" class="btn btn-success">
+							                       	<span class="glyphicon glyphicon-ok"></span>
+							                       	 GRAVAR
+							                    </button>
+							                </div>
+							            </div>
 			                    	</div>
 			                        <br><br>
 								</form>
@@ -204,18 +222,17 @@
 		      });
 		</script>
 		<script>
-			function desabilitarBox1(comboBoxValue){  
-				if(comboBoxValue == "Diário Oficial da União"){
+			function desabilitarBox1(comboBoxValue, comboBox){  
+				if(comboBox == "comboTipoDemanda"){
 					document.getElementById("num_demandaSelecionado").disabled = false;
-					document.getElementById("anoSelecionado").disabled = true;
-					document.getElementById("remetenteSelecionado").disabled = true;
-				} else {
-					if(comboBoxValue == "E-Mail"){
-						document.getElementById("num_demandaSelecionado").disabled = true;
+					document.getElementById("anoSelecionado").disabled = false;
+					document.getElementById("remetenteSelecionado").disabled = false;
+					if(comboBoxValue == "Diário Oficial da União"){
+						document.getElementById("num_demandaSelecionado").disabled = false;
 						document.getElementById("anoSelecionado").disabled = true;
-						document.getElementById("remetenteSelecionado").disabled = false;
+						document.getElementById("remetenteSelecionado").disabled = true;
 					} else {
-						if(comboBoxValue == "Telefonema"){
+						if(comboBoxValue == "E-Mail"){
 							document.getElementById("num_demandaSelecionado").disabled = true;
 							document.getElementById("anoSelecionado").disabled = true;
 							document.getElementById("remetenteSelecionado").disabled = false;
@@ -225,61 +242,57 @@
 								document.getElementById("anoSelecionado").disabled = false;
 								document.getElementById("remetenteSelecionado").disabled = false;
 							} else {
-								if(comboBoxValue != "Diário Oficial da União" || comboBoxValue != "E-Mail" || comboBoxValue != "Telefonema"
-									|| comboBoxValue != "Ofício"){
-									document.getElementById("num_demandaSelecionado").disabled = false;
-									document.getElementById("anoSelecionado").disabled = false;
+								if(comboBoxValue == "Telefonema"){
+									document.getElementById("num_demandaSelecionado").disabled = true;
+									document.getElementById("anoSelecionado").disabled = true;
 									document.getElementById("remetenteSelecionado").disabled = false;
 								}
 							}
 						}
 					}
-				}
+				} 
 			}
-			
-			function desabilitarBox2(comboBoxValue){  
-				if(comboBoxValue == "Acórdão"){
+			function desabilitarBox2(comboBoxValue, comboBox){  
+				if(comboBox == "comboNatureza"){
 					document.getElementById("num_acordaoSelecionado").disabled = false;
 					document.getElementById("anoacordaoSelecionado").disabled = false;
 					document.getElementById("colegiadoacordaoSelecionado").disabled = false;
 					document.getElementById("cal02").disabled = false;
-				} else {
-					if(comboBoxValue == "Audiência"){
-						document.getElementById("num_acordaoSelecionado").disabled = true;
-						document.getElementById("anoacordaoSelecionado").disabled = true;
-						document.getElementById("colegiadoacordaoSelecionado").disabled = true;
-						document.getElementById("cal02").disabled = true;
+					if(comboBoxValue == "Acórdão"){
+						document.getElementById("num_acordaoSelecionado").disabled = false;
+						document.getElementById("anoacordaoSelecionado").disabled = false;
+						document.getElementById("colegiadoacordaoSelecionado").disabled = false;
+						document.getElementById("cal02").disabled = false;
 					} else {
-						if(comboBoxValue == "Comunicação"){
+						if(comboBoxValue == "Audiência"){
 							document.getElementById("num_acordaoSelecionado").disabled = true;
 							document.getElementById("anoacordaoSelecionado").disabled = true;
 							document.getElementById("colegiadoacordaoSelecionado").disabled = true;
 							document.getElementById("cal02").disabled = true;
 						} else {
-							if(comboBoxValue == "Diligência"){
+							if(comboBoxValue == "Comunicação"){
 								document.getElementById("num_acordaoSelecionado").disabled = true;
 								document.getElementById("anoacordaoSelecionado").disabled = true;
 								document.getElementById("colegiadoacordaoSelecionado").disabled = true;
 								document.getElementById("cal02").disabled = true;
 							} else {
-								if(comboBoxValue == "Oitiva"){
+								if(comboBoxValue == "Diligência"){
 									document.getElementById("num_acordaoSelecionado").disabled = true;
 									document.getElementById("anoacordaoSelecionado").disabled = true;
 									document.getElementById("colegiadoacordaoSelecionado").disabled = true;
 									document.getElementById("cal02").disabled = true;
 								} else {
-									if(comboBoxValue != "Acórdão" || comboBoxValue != "Audiência" || comboBoxValue != "Comunicação"
-										|| comboBoxValue != "Diligência" || comboBoxValue != "Oitiva"){
-										document.getElementById("num_acordaoSelecionado").disabled = false;
-										document.getElementById("anoacordaoSelecionado").disabled = false;
-										document.getElementById("colegiadoacordaoSelecionado").disabled = false;
-										document.getElementById("cal02").disabled = false;
+									if(comboBoxValue == "Oitiva"){
+										document.getElementById("num_acordaoSelecionado").disabled = true;
+										document.getElementById("anoacordaoSelecionado").disabled = true;
+										document.getElementById("colegiadoacordaoSelecionado").disabled = true;
+										document.getElementById("cal02").disabled = true;
 									}
 								}
 							}
 						}
 					}
-				}
+				} 
 			}
 		</script>
 	</body>

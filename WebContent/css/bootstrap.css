@@ -2590,10 +2590,11 @@ output {
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
-.form-controln {
+
+.form-controlm {
   display: block;
   width: 100%;
-  min-width: 500px;
+  min-width: 200px;
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
@@ -2610,10 +2611,10 @@ output {
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
-.form-controlm {
+.form-controln {
   display: block;
   width: 100%;
-  min-width: 250px;
+  min-width: 300px;
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
@@ -2654,6 +2655,26 @@ fieldset[disabled] .form-control {
 }
 .form-control[disabled],
 fieldset[disabled] .form-control {
+  cursor: not-allowed;
+}
+.form-controlm[disabled],
+.form-controlm[readonly],
+fieldset[disabled] .form-controlm {
+  background-color: #eee;
+  opacity: 1;
+}
+.form-controlm[disabled],
+fieldset[disabled] .form-controlm {
+  cursor: not-allowed;
+}
+.form-controln[disabled],
+.form-controln[readonly],
+fieldset[disabled] .form-controln {
+  background-color: #eee;
+  opacity: 1;
+}
+.form-controln[disabled],
+fieldset[disabled] .form-controln {
   cursor: not-allowed;
 }
 textarea.form-control {

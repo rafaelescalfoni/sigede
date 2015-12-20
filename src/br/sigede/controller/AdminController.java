@@ -42,10 +42,6 @@ public class AdminController {
 		result.include("statusList", StatusEnum.getList());
 	}
 	
-	public void usuarioCrud(String msg) {
-		result.include("mensagemErro", msg);
-	}
-	
 	@Get("/admin/usuario/cadastrar_usuario")
 	public void cadastrar_usuario(){	
 		System.out.println("\n\n2º Abre a tela de cadastro de Usuários\n\n");
@@ -96,7 +92,7 @@ public class AdminController {
 	}
 	
 	@Get @Path("/admin/suporte/pesquisa")
-  	public void consulta_usuario(String palavraChave){ 
+  	public void usuarioCrud(String palavraChave){ 
 		System.out.println("\n\n7º Faz a pesquisa pelo usuário\n\n");
   		String strQuery = "FROM Usuario u "
   						  + "WHERE u.nome LIKE :trechoChave OR "

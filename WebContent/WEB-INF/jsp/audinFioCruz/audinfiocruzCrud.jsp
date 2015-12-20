@@ -1,4 +1,4 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -45,7 +45,7 @@
 								<div class="tab-content2">
 									<h4>CONSULTA POR RELATÓRIOS EMITIDOS PELA AUDITORIA INTERNA (AUDIN)</h4>
 								</div>
-								<form action="<c:url value="/demandas/audinfiocruz/pesquisa" />" method="get">
+								<form action="<c:url value="/demandas/audin/pesquisa" />" method="get">
 									<div class="input-group h2">
 										<input name="palavraChave" class="form-control" id="search" type="text" placeholder="Pesquisar...">
 											<span class="input-group-btn">
@@ -78,7 +78,7 @@
 											<tbody>
 												<c:forEach items="${registrodemandaaudinList}" var="registrodemandaaudin" >
 													<tr>
-														<td>${registrodemandaaudin.demandaaudin.tipodemanda} de ${registrodemandaaudin.demandaaudin.tiporelatorioaudin} nº ${registrodemandaaudin.demandaaudin.num_demanda}/${registrodemandaaudin.demandaaudin.ano}</td>
+														<td>${registrodemandaaudin.demandaaudin.tipodemandaaudin} de ${registrodemandaaudin.demandaaudin.tiporelatorioaudin} nº ${registrodemandaaudin.demandaaudin.num_demanda}/${registrodemandaaudin.demandaaudin.ano}</td>
 														<c:if test="${registrodemandaaudin.demandaaudin.unidadeauditada eq null}">
 															<td>Institucional</td>
 														</c:if>
@@ -123,7 +123,7 @@
 												<!-- PESQUISAR DEMANDAS -->
 												<c:forEach items="${demandasEncontradas}" var="registrodemandaaudin">
 													<tr>
-														<td>${registrodemandaaudin.demandaaudin.tipodemanda} de ${registrodemandaaudin.demandaaudin.tiporelatorioaudin} nº ${registrodemandaaudin.demandaaudin.num_demanda}/${registrodemandaaudin.demandaaudin.ano}</td>
+														<td>${registrodemandaaudin.demandaaudin.tipodemandaaudin} de ${registrodemandaaudin.demandaaudin.tiporelatorioaudin} nº ${registrodemandaaudin.demandaaudin.num_demanda}/${registrodemandaaudin.demandaaudin.ano}</td>
 														<c:if test="${registrodemandaaudin.demandaaudin.unidadeauditada eq null}">
 															<td>Institucional</td>
 														</c:if>
@@ -175,8 +175,5 @@
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript">
-			
-		</script>
 	</body>
 </html>

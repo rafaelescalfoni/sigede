@@ -12,19 +12,16 @@ import br.sigede.utils.componentes.StatusRegistroEnum;
 import br.sigede.utils.componentes.TipoDemandaEnum;
 import br.sigede.utils.componentes.TipoRelatorioAudinEnum;
 import br.sigede.utils.componentes.UnidadeEnum;
-import br.sigede.utils.componentes.UserSession;
 
 @Resource
 public class RelatorioController {
 	// objetos que serao injetados automaticamente pelo vraptor
 	// (para isto, as classes devem estar anotadas com @Component)
 	private final Result result;
-	private final UserSession userSession;
 	private final DAOFactory daoFactory;
 
-	public RelatorioController(Result result, UserSession userSession, DAOFactory daoFactory) {
+	public RelatorioController(Result result, DAOFactory daoFactory) {
 		this.result = result;
-		this.userSession = userSession;
 		this.daoFactory = daoFactory;
 	}
 

@@ -46,6 +46,7 @@ public class DoController {
 	//1º Abre o formulário de listagem das Demandas DO cadastradas
 	@Get @Path("/demandas/do")
 	public void doCrud() {
+		System.out.println("\n\n1º Abre o formulário de listagem das Demandas DO cadastradas\n\n");
 		result.include("usuarioList", daoFactory.getUsuarioDAO().list());
 		result.include("demandadoList", daoFactory.getDemandaDoDAO().list());
 		result.include("registrodemandadoList", daoFactory.getRegistroDemandaDoDAO().list());
@@ -58,15 +59,11 @@ public class DoController {
 		result.include("unidadeList", UnidadeEnum.getList());
 		result.include("statusregistroList", StatusRegistroEnum.getList());
 	}
-	
-	//Caso ocorra algum erro no formulário de listagem das Demandas DO, retorna a mensagem de erro
-	public void doCrud(String msg) {
-		result.include("mensagemErro", msg);
-	}
 
 	//2º Abre o formulário de cadastro das Demandas DO
 	@Get("/do/cadastrar_do")
 	public void cadastrar_do() {
+		System.out.println("\n\n2º Abre o formulário de cadastro da Demanda DO\n\n");
 		result.include("usuarioList", daoFactory.getUsuarioDAO().list());
 		result.include("demandadoList", daoFactory.getDemandaDoDAO().list());
 		result.include("registrodemandadoList", daoFactory.getRegistroDemandaDoDAO().list());
@@ -83,6 +80,7 @@ public class DoController {
 	//4º Abre o formulário de cadastro dos registros da Demanda DO salva anteriormente
 	@Get @Path("/demandas/do/registro/{demandado.id}")
 	public void cadastrar_do_registro(Long demandadoId) {
+		System.out.println("\n\n4º Abre o formulário de cadastro do Registro da Demanda DO salva anteriormente\n\n");
 		result.include("demandado", daoFactory.getDemandaDoDAO().get(demandadoId));
 		result.include("registrodemandado", daoFactory.getRegistroDemandaDoDAO().get(demandadoId));
 		result.include("demandadoList", daoFactory.getDemandaDoDAO().list());
@@ -101,6 +99,7 @@ public class DoController {
 	//6º Abre o formulário de cadastro dos novos registros da Demanda DO salva anteriormente
 	@Get @Path("/demandas/do/registro/{demandadoId}/add")
 	public void cadastrar_do_registro_novo(Long demandadoId) {
+		System.out.println("\n\n6º Abre o formulário de cadastro do novo Registro da Demanda DO salva anteriormente\n\n");
 		result.include("demandado", daoFactory.getDemandaDoDAO().get(demandadoId));
 		result.include("registrodemandado", daoFactory.getRegistroDemandaDoDAO().get(demandadoId));
 		result.include("demandadoList", daoFactory.getDemandaDoDAO().list());
@@ -116,31 +115,12 @@ public class DoController {
 		result.include("statusregistroList", StatusRegistroEnum.getList());
 		userSession.setDemandado(daoFactory.getDemandaDoDAO().get(demandadoId));
 	}
-
-	@Get @Path("/demandas/do/{demandaId}/update")
-	public void edicao_do(Long demandaId) {
-		result.include("demandado", daoFactory.getDemandaDoDAO().get(demandaId));
-		result.include("registrodemandado", daoFactory.getRegistroDemandaDoDAO().get(demandaId));
-		result.include("demandadoList", daoFactory.getDemandaDoDAO().list());
-		result.include("registrodemandadoList", daoFactory.getRegistroDemandaDoDAO().list());
-		result.include("usuarioList", daoFactory.getUsuarioDAO().list());
-		result.include("tipodemandadoList", TipoDemandaDoEnum.getList());
-		result.include("anoList", AnoEnum.getList());
-		result.include("naturezadoList", NaturezaDoEnum.getList());
-		result.include("tiporelatoriodoList", TipoRelatorioDoEnum.getList());
-		result.include("exerciciorelatorioList", AnoEnum.getList());
-		result.include("areatematicaList", AreaTematicaEnum.getList());
-		result.include("unidadeList", UnidadeEnum.getList());
-		result.include("statusregistroList", StatusRegistroEnum.getList());
-	}
 	
 	//8º Abre o formulário para edição do registro da Demanda DO
 	@Get @Path("/demandas/do/registro/{demandadoId}/update")
 	public void edicao_do_registro(Long demandadoId) {
-		result.include("demandado", daoFactory.getDemandaDoDAO().get(demandadoId));
+		System.out.println("\n\n8º Abre o formulário para edição do registro da demanda DO\n\n");
 		result.include("registrodemandado", daoFactory.getRegistroDemandaDoDAO().get(demandadoId));
-		result.include("demandadoList", daoFactory.getDemandaDoDAO().list());
-		result.include("registrodemandadoList", daoFactory.getRegistroDemandaDoDAO().list());
 		result.include("usuarioList", daoFactory.getUsuarioDAO().list());
 		result.include("tipodemandadoList", TipoDemandaDoEnum.getList());
 		result.include("anoList", AnoEnum.getList());
@@ -152,24 +132,7 @@ public class DoController {
 		result.include("statusregistroList", StatusRegistroEnum.getList());
 	}
 
-	@Get @Path("/demandas/do/{demandaId}")
-	public void deleta(Long demandaId) {
-		result.include("demandado", daoFactory.getDemandaDoDAO().get(demandaId));
-		result.include("registrodemandado", daoFactory.getRegistroDemandaDoDAO().get(demandaId));
-		result.include("demandadoList", daoFactory.getDemandaDoDAO().list());
-		result.include("registrodemandadoList", daoFactory.getRegistroDemandaDoDAO().list());
-		result.include("usuarioList", daoFactory.getUsuarioDAO().list());
-		result.include("tipodemandadoList", TipoDemandaDoEnum.getList());
-		result.include("anoList", AnoEnum.getList());
-		result.include("naturezadoList", NaturezaDoEnum.getList());
-		result.include("tiporelatoriodoList", TipoRelatorioDoEnum.getList());
-		result.include("exerciciorelatorioList", AnoEnum.getList());
-		result.include("areatematicaList", AreaTematicaEnum.getList());
-		result.include("unidadeList", UnidadeEnum.getList());
-		result.include("statusregistroList", StatusRegistroEnum.getList());
-	}
-
-	
+		
 	
 	/////////////////////////////////////
 	// metodos CRUD
@@ -177,7 +140,8 @@ public class DoController {
 	
 	//3º Salva no banco de dados os dados contidos no formulário de cadastro das Demandas DO
 	@Post @Path("/demandas/do")
-	public void add(DemandaDo demandado) {
+	public void adiciona(DemandaDo demandado) {
+		System.out.println("\n\n3º Salva a Demanda DO no Banco de Dados\n\n");
 		SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
 		Date data_atual = new Date();
 		demandado.setData_cadastro(formatador.format(data_atual)); // Salva em data_cadastro a data atual
@@ -189,7 +153,8 @@ public class DoController {
 
 	//5º Salva no banco de dados os dados contidos no formulário de cadastro do registro da Demanda DO
 	@Post @Path("/demandas/do/registro/{demandado.id}")
-	public void add_registro(RegistroDemandaDo registrodemandado) {
+	public void adiciona_registro(RegistroDemandaDo registrodemandado) {
+		System.out.println("\n\n5º Salva o registro da Demanda DO no Banco de Dados\n\n");
 		registrodemandado.setDemandado(userSession.getDemandado()); //Salva o ID da DemandaDo que está na sessão na tabela RegistroDemandaDo
 		daoFactory.getRegistroDemandaDoDAO().add(registrodemandado); //Salva os dados digitados pelo usuário na tabela RegistroDemandaDo
 		result.redirectTo(this).doCrud(); //Redireciona para o formulário de listagem das Demandas TCU cadastradas
@@ -197,61 +162,57 @@ public class DoController {
 
 	//7º Salva no banco de dados os dados contidos no formulário de cadastro do novo registro da Demanda DO
 	@Post @Path("/demandas/do/registro/{demandado.id}/add")
-	public void add_registro_novo(RegistroDemandaDo registrodemandado) {
+	public void adiciona_registro_novo(RegistroDemandaDo registrodemandado) {
+		System.out.println("\n\n7º Salva o novo registro da Demanda DO no Banco de Dados\n\n");
 		registrodemandado.setDemandado(userSession.getDemandado()); //Salva o ID da DemandaDo que está na sessão na tabela RegistroDemandaDo
 		daoFactory.getRegistroDemandaDoDAO().add(registrodemandado); //Salva os dados digitados pelo usuário na tabela RegistroDemandaDo
 		result.redirectTo(this).doCrud(); //Redireciona para o formulário de listagem das Demandas TCU cadastradas
 	}
-	
-	@Put @Path("/demandas/do/{demandado.id}")
-	public void update(DemandaDo demandado, RegistroDemandaDo registrodemandado) {
-		daoFactory.getDemandaDoDAO().update(demandado);
+
+	//9º Salva no banco de dados os dados contidos no formulário de edição do registro da Demanda DO
+	@Put @Path("/demandas/do/registro/{registrodemandado.id}")
+	public void edicao_do_registro(RegistroDemandaDo registrodemandado) {
+		System.out.println("\n\n9º Salva os dados contidos no formulário de edição do registro da Demanda DO no Banco de Dados\n\n");
 		daoFactory.getRegistroDemandaDoDAO().update(registrodemandado);
 		result.redirectTo(this).doCrud();
 	}
 
-	@Put @Path("/demandas/do/registro/{demandado.id}")
-	public void update_registro(DemandaDo demandado, RegistroDemandaDo registrodemandado) {
-		daoFactory.getDemandaDoDAO().update(demandado);
-		daoFactory.getRegistroDemandaDoDAO().add(registrodemandado);
-		result.redirectTo(this).doCrud();
-	}
-
-	@Delete @Path("/demandas/do/{demandado.id}")
-	public void delete(DemandaDo demandado, RegistroDemandaDo registrodemandado) {
-		daoFactory.getDemandaDoDAO().delete(demandado);
+	//10º Deleta os dados contidos no formulário de registro da Demanda DO do Banco de Dados
+	@Delete @Path("/demandas/do/registro/{registrodemandado.id}")
+	public void delete_registro(RegistroDemandaDo registrodemandado) {
+		System.out.println("\n\n10º Deleta os dados contidos no formulário de registro da Demanda DO do Banco de Dados\n\n");
 		daoFactory.getRegistroDemandaDoDAO().delete(registrodemandado);
 		result.redirectTo(this).doCrud();
 	}
 
 	@Get
-	@Path("/demandas/do/pesquisa")
-	public void consulta_do(String palavraChave) {
-		String strQuery = "FROM DemandaDo do " 
-							+ "WHERE   do.tipodemandado LIKE :trechoChave OR "
-							+ " 	   do.num_demanda LIKE :trechoChave OR "
-							+ " 	   do.ano LIKE :trechoChave OR " 
-							+ " 	   do.data_demanda LIKE :trechoChave OR "
-							+ "	   	   do.remetente LIKE :trechoChave OR " 
-							+ "        do.interessado LIKE :trechoChave OR " 
-							+ "        do.processo_interno LIKE :trechoChave OR "
-							+ "        do.naturezado LIKE :trechoChave OR "
-							+ " 	   do.tiporelatoriodo LIKE :trechoChave OR "
-							+ "        do.num_relatorio LIKE :trechoChave OR "
-							+ "        do.data_relatorio LIKE :trechoChave OR "
-							+ "        do.exerciciorelatorio LIKE :trechoChave";
-							//+ "      do.areatematica LIKE :trechoChave OR "
-							//+ "      do.unidade LIKE :trechoChave OR " 
-							//+ "      do.assunto LIKE :trechoChave OR "
-							//+ "      do.desdobramento LIKE :trechoChave OR " 
-							//+ "      do.providencia LIKE :trechoChave OR "
-							//+ "      do.data_atualizacao LIKE :trechoChave OR " 
-							//+ "      do.statusregistro LIKE :trechoChave";
+	@Path("/demanda/do/pesquisa")
+	public void doCrud(String palavraChave) {
+		String strQuery = "FROM RegistroDemandaDo rdo " 
+							+ "WHERE   rdo.demandado.tipodemandado LIKE :trechoChave OR "
+							+ " 	   rdo.demandado.num_demanda LIKE :trechoChave OR "
+							+ " 	   rdo.demandado.ano LIKE :trechoChave OR " 
+							+ " 	   rdo.demandado.data_demanda LIKE :trechoChave OR "
+							+ "	   	   rdo.demandado.remetente LIKE :trechoChave OR " 
+							+ "        rdo.demandado.interessado LIKE :trechoChave OR " 
+							+ "        rdo.demandado.processo_interno LIKE :trechoChave OR "
+							+ "        rdo.demandado.naturezado LIKE :trechoChave OR "
+							+ " 	   rdo.demandado.tiporelatoriodo LIKE :trechoChave OR "
+							+ "        rdo.demandado.num_relatorio LIKE :trechoChave OR "
+							+ "        rdo.demandado.data_relatorio LIKE :trechoChave OR "
+							+ "        rdo.demandado.exerciciorelatorio LIKE :trechoChave OR "
+							+ "        rdo.areatematica LIKE :trechoChave OR "
+							+ "        rdo.unidade LIKE :trechoChave OR " 
+							+ "        rdo.assunto LIKE :trechoChave OR "
+							+ "        rdo.desdobramento LIKE :trechoChave OR " 
+							+ "        rdo.providencia LIKE :trechoChave OR "
+							+ "        rdo.data_atualizacao LIKE :trechoChave OR " 
+							+ "        rdo.statusregistro LIKE :trechoChave";
 
 	    
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("trechoChave", "%" + palavraChave + "%");
-		List<DemandaDo> demandasEncontradas = daoFactory.getDemandaDoDAO().list(strQuery, params);
+		List<RegistroDemandaDo> demandasEncontradas = daoFactory.getRegistroDemandaDoDAO().list(strQuery, params);
 		result.include("demandasEncontradas", demandasEncontradas);
 	}
 

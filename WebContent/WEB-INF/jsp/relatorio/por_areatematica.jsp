@@ -32,110 +32,73 @@
                         		<div class="tab-content2">
                     				<h4>RELATÓRIO GERENCIAL POR ÁREA TEMÁTICA</h4>
                     			</div>
-                      			<form class="form-inline" role="form">
-                             		<!-- Select Basic -->
-                             		<div class="tab-content3">
-                         				<div class="form-group">
-                            				<div class="control-label">
-                            					<label for="selectbasic">Área Temática</label> 
-                            				</div>
-                            				<div class="control-label">
-                              					<select id="selectbasicuat" name="selectbasic" class="form-control">
-                                					<option value=""></option>
-                                					<option value="Aposentadoria e Pensão"> Aposentadoria e Pensão</option>
-                                					<option value="Admissão">Admissão</option>
-                                					<option value="Afastamentos">Afastamentos</option>
-                                					<option value="Contratos">Contratos</option>
-                              					</select>
-                            				</div>
-                          				</div>
-                            			<div class="form-group">
-                            				<div class="control-label">
-                            					<label for="selectbasic">Ano</label>
-                            				</div>
-                            				<div class="control-label">
-                              					<select id="selectbasic3" name="selectbasic" class="form-control">
-					                                <option value=""></option>
-					                                <option value="2014">2014</option>
-					                                <option value="2015">2015</option>
-					                                <option value="2016">2016</option>
-					                                <option value="2017">2017</option>
-					                                <option value="2018">2018</option>
-					                                <option value="2019">2019</option>
-					                                <option value="2020">2020</option>
-					                                <option value="2021">2021</option>
-					                                <option value="2022">2022</option>
-					                                <option value="2023">2023</option>
-					                                <option value="2024">2024</option>
-					                                <option value="2025">2025</option>
-                              					</select>
-                            				</div>
-                          				</div>
-                             		</div>
-                            		<br><br>
-                            	</form>
+                    			<form class="form-inline" role="form" 
+		                      		action="<c:url value="/relatorios/areatematica"/>" method="post">
 								<script type="text/javascript">
 									$(function () {
 									    $('#container').highcharts({
 									        chart: {
-									            type: 'areaspline'
+									            type: 'column'
 									        },
 									        title: {
-									            text: 'Average fruit consumption during one week'
+									            text: 'PERCENTUAL DE REGISTROS POR ÁREA TEMÁTICA'
 									        },
-									        legend: {
-									            layout: 'vertical',
-									            align: 'left',
-									            verticalAlign: 'top',
-									            x: 150,
-									            y: 100,
-									            floating: true,
-									            borderWidth: 1,
-									            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+									        subtitle: {
+									            text: ''
 									        },
 									        xAxis: {
 									            categories: [
-									                'Monday',
-									                'Tuesday',
-									                'Wednesday',
-									                'Thursday',
-									                'Friday',
-									                'Saturday',
-									                'Sunday'
+													'Aposentadoria e Pensão',
+									                'Avaliação de Resultado',
+									                'Bem Imóvel',
+									                'Bem Móvel',
+									                'Contratos',
+									                'Licitação',
+									                'TI',
 									            ],
-									            plotBands: [{ // visualize the weekend
-									                from: 4.5,
-									                to: 6.5,
-									                color: 'rgba(68, 170, 213, .2)'
-									            }]
+									            crosshair: true
 									        },
 									        yAxis: {
+									            min: 0,
 									            title: {
-									                text: 'Fruit units'
+									                text: 'Quantidade de Registros'
 									            }
 									        },
 									        tooltip: {
+									            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+									            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+									                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+									            footerFormat: '</table>',
 									            shared: true,
-									            valueSuffix: ' units'
-									        },
-									        credits: {
-									            enabled: false
+									            useHTML: true
 									        },
 									        plotOptions: {
-									            areaspline: {
-									                fillOpacity: 0.5
+									            column: {
+									                pointPadding: 0.2,
+									                borderWidth: 0
 									            }
 									        },
 									        series: [{
-									            name: 'John',
-									            data: [3, 4, 3, 5, 4, 10, 12]
+									            name: '2012',
+									            data: [0, 0, 0, 0, 0, 0, 0]
+	
 									        }, {
-									            name: 'Jane',
-									            data: [1, 3, 4, 3, 3, 5, 4]
+									            name: '2013',
+									            data: [0, 4, 0, 0, 0, 2, 0]
+	
+									        }, {
+									            name: '2014',
+									            data: [5, 0, 0, 1, 0, 2, 1]
+	
+									        }, {
+									            name: '2015',
+									            data: [0, 1, 1, 0, 1, 3, 0]
+	
 									        }]
 									    });
 									});
 							</script>
+							</form>
 							<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 							                    
 							</div>

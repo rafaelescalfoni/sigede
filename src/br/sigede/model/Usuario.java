@@ -17,8 +17,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.Email;
-import org.hibernate.validator.Length;
-import org.hibernate.validator.NotEmpty;
 
 
 @Entity
@@ -35,13 +33,11 @@ public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable=false, nullable=false)
     private Long id;
     @Column(name = "data_cadastro", updatable=false, nullable=false)
     private String data_cadastro;
     @Column(name = "nome")
-    @NotEmpty(message="O nome deve ser informado!")
-    @Length(min=3, message="O nome precisa ter mais de 3 letras")
     private String nome;
     @Column(name = "email")
     @Email(message="Informe um e-mail valido!")

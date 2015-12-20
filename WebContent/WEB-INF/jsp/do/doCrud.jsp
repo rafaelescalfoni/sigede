@@ -45,7 +45,7 @@
 		                        <div class="tab-content2">
 		                    		<h4>CONSULTA POR DEMANDAS ORIGINADAS DOS DEMAIS ÓRGÃOS DE CONTROLE</h4>		                
 		                    	</div>
-		                    	<form action="<c:url value="/demandas/do/pesquisa" />" method="get">
+		                    	<form action="<c:url value="/demanda/do/pesquisa" />" method="get">
 									<div class="input-group h2">
 										<input name="palavraChave" class="form-control" id="search" type="text" placeholder="Pesquisar...">
 											<span class="input-group-btn">

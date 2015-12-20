@@ -17,7 +17,10 @@ public enum AreaTematicaEnum {
 	AUXTRANSPORTE("Auxílio Transporte"),
 	AVALRESULTADO("Avaliação de Resultados"),
 	BEMIMOVEL("Bem Imóvel"),
-	BEMMOVEL("Bem Móvel");
+	BEMMOVEL("Bem Móvel"),
+	LICITACAO("Licitação"),
+	CONTRATOS("Contratos"),
+	TI("Tecnologia da Informação");
 	
 	private String areatematica;
 	

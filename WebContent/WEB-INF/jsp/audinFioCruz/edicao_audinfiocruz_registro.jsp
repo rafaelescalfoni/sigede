@@ -42,27 +42,40 @@
 		                      	<form class="form-inline" role="form" 
 		                      		action="<c:url value="/demandas/audinfiocruz/registro/${registrodemandaaudin.id}"/>" method="post">
 		                            <div class="tab-content3">
+		                            	<div class="form-group">
+		                            		<div class="control-label">
+		                            			<label for="id">ID</label> 
+		                            		</div>
+		                            		<div class="control-label">
+			                              		<input id="id" type="text" readonly="readonly" name="registrodemandaaudin.demandaaudin.id" 
+			                              			class="form-control" value="${registrodemandaaudin.demandaaudin.id}">
+		                              		</div>
+		                            	</div>
 		                        		<div class="form-group">
 		                            		<div class="control-label">
 		                            			<label for="tiporelatorioaudin">Tipo de Relatório</label>
 		                            		</div>
-		                              		<select id="tiporelatorioaudin" name="demandaaudin.tiporelatorioaudin"
-		                              			class="form-control" disabled="disabled">
-	                                			<option value="">Selecione</option>
-	                                			<c:forEach items="${tiporelatorioaudinList}" var="tiporelatorioaudin">
-	                                				<option value="${tiporelatorioaudin}"
-	                                					<c:if test="${tiporelatorioaudin eq registrodemandaaudin.demandaaudin.tiporelatorioaudin}">selected="selected"</c:if>>
-	                                					${tiporelatorioaudin}
-	                                				</option>
-	                                			</c:forEach>
-	                              			</select>
+		                            		<div class="control-label">
+			                              		<select id="tiporelatorioaudin" name="demandaaudin.tiporelatorioaudin"
+			                              			class="form-control" disabled="disabled">
+		                                			<option value="">Selecione</option>
+		                                			<c:forEach items="${tiporelatorioaudinList}" var="tiporelatorioaudin">
+		                                				<option value="${tiporelatorioaudin}"
+		                                					<c:if test="${tiporelatorioaudin eq registrodemandaaudin.demandaaudin.tiporelatorioaudin}">selected="selected"</c:if>>
+		                                					${tiporelatorioaudin}
+		                                				</option>
+		                                			</c:forEach>
+		                              			</select>
+	                              			</div>
 		                            	</div>
 		                            	<div class="form-group">
 		                            		<div class="control-label">
 		                            			<label for="num_demanda">Número</label> 
 		                            		</div>
-		                              		<input id="num_demanda" type="text" name="demandaaudin.num_demanda" 
-		                              			class="form-control" disabled="disabled" value="${registrodemandaaudin.demandaaudin.num_demanda}">
+		                            		<div class="control-label">
+			                              		<input id="num_demanda" type="text" name="demandaaudin.num_demanda" 
+			                              			class="form-control" disabled="disabled" value="${registrodemandaaudin.demandaaudin.num_demanda}">
+		                              		</div>
 		                            	</div>
 		                            	<div class="form-group">
 		                            		<div class="control-label">
@@ -84,15 +97,19 @@
 		                            		<div class="control-label">
 		                            			<label for="data_inicio">Data Inicio</label>
 		                            		</div>
-		                                	<input id="cal02" type="text" name="demandaaudin.data_inicio" 
-		                                		class="form-control" disabled="disabled" value="${registrodemandaaudin.demandaaudin.data_inicio}">
+		                            		<div class="control-label">
+			                                	<input id="cal02" type="text" name="demandaaudin.data_inicio" class="form-control"  
+			                                		disabled="disabled" value="${registrodemandaaudin.demandaaudin.data_inicio}">
+		                                	</div>
 		                            	</div>
 		                            	<div class="form-group">
 		                            		<div class="control-label">
 		                            			<label for="data_fim">Data Fim</label>
 		                            		</div>   
-		                            		<input id="cal03" type="text" name="demandaaudin.data_fim" 
-		                            			class="form-control" disabled="disabled" value="${registrodemandaaudin.demandaaudin.data_fim}">
+		                            		<div class="control-label">
+			                            		<input id="cal03" type="text" name="demandaaudin.data_fim" class="form-control"  
+			                            			disabled="disabled" value="${registrodemandaaudin.demandaaudin.data_fim}">
+		                            		</div>
 		                          		</div>
 		                          		<div class="form-group">
 			                            	<div class="control-label">
@@ -100,7 +117,7 @@
 			                            	</div> 
 			                            	<div class="control-label">
 			                                    <input id="processo_interno" type="text" name="demandaaudin.processo_interno" 
-			                                    	class="form-control" disabled="disabled" value="${registrodemandaaudin.demandaaudin.processo_interno}">
+			                                    	class="form-controlm" disabled="disabled" value="${registrodemandaaudin.demandaaudin.processo_interno}">
 			                                </div>
 			                        	</div>
 		                            	<div class="form-group">
@@ -155,26 +172,6 @@
 			                            		</div>
 			                          		</div>
 		                          		</c:if>
-		                          		<c:if test="${userSession.usuario.perfil eq 'Administrador' }">
-			                          		<div class="control-label" align="right">
-			                          			<a href="<c:url value="/demandas/audinfiocruz/${registrodemandaaudin.demandaaudin.id}/update"/>">
-								                	<button type="button" class="btn btn-info">
-									                  	<span class="glyphicon glyphicon-pencil"></span>
-									                  	 EDITAR
-									                </button>
-								                </a>
-								            </div>
-		                                </c:if>
-		                          		<c:if test="${userSession.usuario.perfil eq 'Usuário Avançado' }">
-			                          		<div class="control-label" align="right">
-			                          			<a href="<c:url value="/demandas/audinfiocruz/${demandaaudin.id}/update"/>">
-									               	<button type="button" class="btn btn-info">
-										              	<span class="glyphicon glyphicon-pencil"></span>
-										              	 EDITAR
-										            </button>
-									            </a>
-									        </div>
-		                                </c:if>
 		                    		</div>
 		                            <br><br>
 		                            <c:if test="${registrodemandaaudin.areatematica ne null}">
@@ -183,7 +180,10 @@
 			                            		<label for="areatematica">Área Temática*</label> 
 			                            	</div>
 			                            	<div class="control-label">
-			                              		<select id="areatematica" name="registrodemandaaudin.areatematica" class="form-control">
+			                              		<select id="areatematica" name="registrodemandaaudin.areatematica" 
+			                              			<c:if test="${demandaaudin.institucional eq 'Sim'}">disabled="disabled"</c:if>
+		                              				<c:if test="${demandaaudin.institucional ne 'Sim'}">required="required"</c:if>
+			                              			class="form-control">
 			                                		<option value="">Selecione</option>
 			                                		<c:forEach items="${areatematicaList}" var="areatematica">
 			                                			<option value="${areatematica}"
@@ -201,7 +201,10 @@
 			                            		<label for="unidade">Unidade*</label>
 			                            	</div>
 			                            	<div class="control-label">
-			                              		<select id="unidade" name="registrodemandaaudin.unidade" class="form-control">
+			                              		<select id="unidade" name="registrodemandaaudin.unidade" 
+			                              			<c:if test="${demandaaudin.institucional eq 'Não'}">disabled="disabled"</c:if>
+		                              				<c:if test="${demandaaudin.institucional ne 'Não'}">required="required"</c:if>
+			                              			class="form-control">
 			                                		<option value="">Selecione</option>
 			                                		<c:forEach items="${unidadeList}" var="unidade">
 			                                			<option value="${unidade}"
@@ -226,39 +229,47 @@
 		                            <div class="control-label">
 		                            	<label for="assunto">Assunto*</label>
 		                            </div>
-		                            <textarea id="assunto" class="textarea" rows="3" required="required"
-		                            	name="registrodemandaaudin.assunto">${registrodemandaaudin.assunto}</textarea>		                           
+		                            <div class="control-label">
+			                            <textarea id="assunto" class="textarea" rows="3" required="required"
+			                            	name="registrodemandaaudin.assunto">${registrodemandaaudin.assunto}</textarea>
+		                            </div>		                           
 		                            <br><br>
 		                            <div class="control-label">
 		                            	<label for="desdobramento">Recomendação(ões)*</label>
 		                            </div>
-									<textarea id="desdobramento" class="textarea" rows="3" required="required"
-										name="registrodemandaaudin.desdobramento">${registrodemandaaudin.desdobramento}</textarea>
+		                            <div class="control-label">
+										<textarea id="desdobramento" class="textarea" rows="3" required="required"
+											name="registrodemandaaudin.desdobramento">${registrodemandaaudin.desdobramento}</textarea>
+									</div>
 		                            <br><br>
 		                            <div class="control-label">
 		                            	<label for="providencia">Providência(s)</label>
 		                            </div>
-		                            <textarea id="providencia" class="textarea" rows="3" 
-		                            	name="registrodemandaaudin.providencia">${registrodemandaaudin.providencia}</textarea>
+		                            <div class="control-label">
+			                            <textarea id="providencia" class="textarea" rows="3" 
+			                            	name="registrodemandaaudin.providencia">${registrodemandaaudin.providencia}</textarea>
+		                            </div>
 		                          	<div class="form-group">
 		                            	<div class="control-label">
-		                            		<label for="statusregistro">Status</label> 
+		                            		<label for="statusregistro">Status*</label> 
 		                            	</div>
-		                              	<select id="statusregistro" class="form-control" 
-		                              		name="registrodemandaaudin.statusregistro" required="required">
-		                                	<option value="">Selecione</option>
-		                                	<c:forEach items="${statusregistroList}" var="statusregistro">
-		                                		<option value="${statusregistro}"
-		                                			<c:if test="${statusregistro eq registrodemandaaudin.statusregistro}">selected="selected"</c:if>>
-		                                			${statusregistro}
-		                                		</option>
-		                                	</c:forEach>
-		                              	</select>
+		                            	<div class="control-label">
+			                              	<select id="statusregistro" class="form-control" 
+			                              		name="registrodemandaaudin.statusregistro" required="required">
+			                                	<option value="">Selecione</option>
+			                                	<c:forEach items="${statusregistroList}" var="statusregistro">
+			                                		<option value="${statusregistro}"
+			                                			<c:if test="${statusregistro eq registrodemandaaudin.statusregistro}">selected="selected"</c:if>>
+			                                			${statusregistro}
+			                                		</option>
+			                                	</c:forEach>
+			                              	</select>
+		                              	</div>
 		                          	</div>
 		                            <br><br>
 		                            <c:if test="${userSession.usuario.perfil eq 'Administrador' }">
 			                            <div class="tab-content" align="right">
-			                            	<div class="control-label" align="right">
+			                            	<div class="control-label">
 				                                	<button type="submit" id="editar" name="_method" class="btn btn-success" value="PUT">
 				                                		<span class="glyphicon glyphicon-ok"></span>
 				                                		 GRAVAR

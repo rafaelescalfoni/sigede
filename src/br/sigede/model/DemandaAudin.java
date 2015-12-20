@@ -1,7 +1,6 @@
 package br.sigede.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -33,16 +32,16 @@ public class DemandaAudin implements Serializable {
 	private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable=false, nullable=false)
     private Long id;
     @Column(name = "data_cadastro", length=20, updatable=false, nullable=false)
     private String data_cadastro;
-    @Column(name = "tipodemanda", nullable=false, length=20)
-    private String tipodemanda;
+    @Column(name = "tipodemandaaudin", nullable=false, length=20)
+    private String tipodemandaaudin;
     @Column(name = "tiporelatorioaudin", nullable=false, length=60)
     private String tiporelatorioaudin;
     @Column(name = "num_demanda", nullable=false, length=10)
-    private int num_demanda;
+    private String num_demanda;
     @Column(name = "ano", nullable=false, length=4)
     private String ano;
     @Column(name = "data_inicio", nullable=false, length=20)
@@ -58,13 +57,13 @@ public class DemandaAudin implements Serializable {
     @Column(name = "unidadeauditada", length=40)
     private String unidadeauditada;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id", updatable=false, nullable=false)
     private Usuario usuario;
     
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "demandaaudin_id")
-	private List<RegistroDemandaAudin> registrodemandaaudinList = new ArrayList<RegistroDemandaAudin>();
+	private List<RegistroDemandaAudin> registrodemandaaudinList;
     
 
 	public DemandaAudin() {
@@ -74,9 +73,9 @@ public class DemandaAudin implements Serializable {
         this.id = id;
     }
     
-    public DemandaAudin(Long id, String tipodemanda, String tiporelatorioaudin, int num_demanda, String ano) {
+    public DemandaAudin(Long id, String tipodemandaaudin, String tiporelatorioaudin, String num_demanda, String ano) {
         this.id = id;
-        this.tipodemanda = tipodemanda;
+        this.tipodemandaaudin = tipodemandaaudin;
         this.tiporelatorioaudin = tiporelatorioaudin;
         this.num_demanda = num_demanda;
         this.ano = ano;
@@ -98,12 +97,12 @@ public class DemandaAudin implements Serializable {
 		this.data_cadastro = data_cadastro;
 	}
 
-	public String getTipodemanda() {
-		return tipodemanda;
+	public String getTipodemandaaudin() {
+		return tipodemandaaudin;
 	}
 
-	public void setTipodemanda(String tipodemanda) {
-		this.tipodemanda = tipodemanda;
+	public void setTipodemandaaudin(String tipodemandaaudin) {
+		this.tipodemandaaudin = tipodemandaaudin;
 	}
 
 	public String getTiporelatorioaudin() {
@@ -114,11 +113,11 @@ public class DemandaAudin implements Serializable {
 		this.tiporelatorioaudin = tiporelatorioaudin;
 	}
 
-	public int getNum_demanda() {
+	public String getNum_demanda() {
 		return num_demanda;
 	}
 
-	public void setNum_demanda(int num_demanda) {
+	public void setNum_demanda(String num_demanda) {
 		this.num_demanda = num_demanda;
 	}
 

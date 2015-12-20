@@ -17,7 +17,10 @@ public enum UnidadeEnum {
 	CPQLMD("CPqLMD"),
 	CPQRR("CPqRR"),
 	CRIS("CRIS"),
-	DIPLAN("DIPLAN");
+	DIPLAN("DIPLAN"),
+	DIREH("DIREH"),
+	DIRAC("DIRAC"),
+	TODAS("Todas as Unidades");
 	
 	private String unidade;
 	

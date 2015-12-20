@@ -46,27 +46,26 @@
 	                             	<div class="tab-content3">
 	                             		<div class="form-group">
 	                            			<div class="control-label">
-	                                    		<label for="data_cadastro">Data de Cadastro</label>
+	                                    		<label for="nome">ID*</label>
 	                            			</div> 
 	                            			<div class="control-label">
-	                                    		<input type="text" id="data_cadastro" class="form-controln" 
-	                                    			name="usuario.data_cadastro" disabled="disabled"
-	                                    			value="${usuario.data_cadastro }">
+	                                    		<input id="id" type="text" required="required" readonly="readonly"
+	                                    			class="form-control" name="usuario.id" value="${usuario.id}">
 	                                  		</div>
 	                        			</div>
 	                        			<div class="form-group">
 	                            			<div class="control-label">
-	                                    		<label for="nome">Nome</label>
+	                                    		<label for="nome">Nome*</label>
 	                            			</div> 
 	                            			<div class="control-label">
 	                                    		<input id="nome" type="text" required="required"
 	                                    			pattern="{3,60}" maxlength="60" 
-	                                    			class="form-controln" name="usuario.nome" value="${usuario.nome }">
+	                                    			class="form-controlm" name="usuario.nome" value="${usuario.nome }">
 	                                  		</div>
 	                        			</div>
 	                                 	<div class="form-group">
 	                            			<div class="control-label">
-	                                    		<label for="email">E-mail</label>
+	                                    		<label for="email">E-mail*</label>
 	                            			</div> 
 	                            			<div class="control-label">
 	                                    		<input id="email" type="email" required="required" 
@@ -76,17 +75,17 @@
 	                        			</div>
 	                        			<div class="form-group">
 	                            			<div class="control-label">
-	                                    		<label for="senha">Senha</label>
+	                                    		<label for="senha">Senha*</label>
 	                            			</div> 
 	                            			<div class="control-label">
 	                                    		<input id="senha" type="password" required="required"
 	                                    			pattern="[a-zA-Z0-9]{5,20}" maxlength="20" 
-	                                    			class="form-controlm" name="usuario.senha" value="${usuario.senha }">
+	                                    			class="form-control" name="usuario.senha" value="${usuario.senha }">
 	                                  		</div>
 	                        			</div>
 	                                 	<div class="form-group">
 	                            			<div class="control-label">
-	                                    		<label for="telefone">Telefone</label>
+	                                    		<label for="telefone">Telefone*</label>
 	                            			</div> 
 	                            			<div class="control-label">
 	                                    		<input id="usuario.telefone" type="text" required="required" 
@@ -96,7 +95,7 @@
 	                        			</div>
 	                        			<div class="form-group">
 	                            			<div class="control-label">
-	                            				<label for="area">Área</label> 
+	                            				<label for="area">Área*</label> 
 	                            			</div>
 	                            			<div class="control-label">
 	                              				<select id="area" name="usuario.area" 
@@ -113,7 +112,7 @@
 	                          			</div>
 	                        			<div class="form-group">
 	                            			<div class="control-label">
-	                            				<label for="perfil">Perfil</label>
+	                            				<label for="perfil">Perfil*</label>
 	                            			</div>
 	                            			<div class="control-label">
 	                              				<select id="perfil" name="usuario.perfil" 
@@ -130,7 +129,7 @@
 	                          			</div>
 	                             		<div class="form-group">
 	                            			<div class="control-label">
-	                            				<label for="status">Status</label>
+	                            				<label for="status">Status*</label>
 	                            			</div>
 	                            			<div class="control-label">
 	                              				<select id="status" name="usuario.status" 
@@ -146,7 +145,7 @@
 	                            			</div>
 	                          			</div>    
 	                                 	<br><br>
-	                                 	<div class="form-group">
+	                                 	<div class="tab-content" align="right">
 	                                		<div class="control-label">
 	                                			<button type="submit" id="editar" name="_method" 
 	                                					class="btn btn-success" value="PUT">
@@ -160,8 +159,8 @@
 	                                			</button>
 	                            			</div>
 	                             		</div>
-	                            		<br><br>
 	                            	</div>	
+	                            	<br><br>
 	                            </form>
 							</div>
 						</div>

@@ -22,7 +22,7 @@
 		<div class="container"> 
         	<div class="col-md-12">
             	<div class="panel with-nav-tabs panel-primary">
-                	<c:import url="../jspf/abas_relatorios_por_unidade.jsp"></c:import>
+                	<c:import url="../jspf/abas_relatorios_por_areatematica.jsp"></c:import>
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="tab1primary">
                     		<div class="container-fluid">
@@ -32,122 +32,75 @@
                         		<div class="tab-content2">
                     				<h4>RELATÓRIO GERENCIAL POR UNIDADE</h4>
                     			</div>
-                      			<form class="form-inline" role="form">
-                             		<!-- Select Basic -->
-                             		<div class="tab-content3">
-                         				<div class="form-group">
-				                        	<div class="control-label">
-				                            	<label for="selectbasic">Unidade Auditada</label>
-				                            </div>
-				                            <div class="control-label">
-				                            	<select id="selectbasic4" name="selectbasic" class="form-control">
-					                                <option value=""></option>
-					                                <option value="Bio-Manguinhos">Bio-Manguinhos</option>
-					                                <option value="Farmanguinhos">Farmanguinhos</option>
-					                                <option value="DIRAD">DIRAD</option>
-					                                <option value="DIREH">DIREH</option>
-					                                <option value="DIRAC">DIRAC</option>
-				                              	</select>
-				                            </div>
-				                  		</div>
-                            			<div class="form-group">
-                            				<div class="control-label">
-                            					<label for="selectbasic">Ano</label>
-                            				</div>
-                            				<div class="control-label">
-                              					<select id="selectbasic3" name="selectbasic" class="form-control">
-					                                <option value=""></option>
-					                                <option value="2014">2014</option>
-					                                <option value="2015">2015</option>
-					                                <option value="2016">2016</option>
-					                                <option value="2017">2017</option>
-					                                <option value="2018">2018</option>
-					                                <option value="2019">2019</option>
-					                                <option value="2020">2020</option>
-					                                <option value="2021">2021</option>
-					                                <option value="2022">2022</option>
-					                                <option value="2023">2023</option>
-					                                <option value="2024">2024</option>
-					                                <option value="2025">2025</option>
-                              					</select>
-                            				</div>
-                          				</div>
-                          				<div class="form-group">
-				                      		<div class="control-label">
-				                            	<label>Origem</label> 
-				                            </div>
-				                            <select id="selectbasicust" name="selectbasic" class="form-control">
-				                            	<option value=""></option>
-				                                <option value="ORIGEM 1">ORIGEM 1</option>
-				                                <option value="ORIGEM 2">ORIGEM 2</option>
-				                                <option value="ORIGEM 3">ORIGEM 3</option>
-				                            </select>
-			                          	</div>
-                             		</div>
-                            		<br><br>
-                            	</form>
+                    			<form class="form-inline" role="form" 
+		                      		action="<c:url value="/relatorios/unidade"/>" method="post">
 								<script type="text/javascript">
 									$(function () {
 									    $('#container').highcharts({
 									        chart: {
-									            type: 'areaspline'
+									            type: 'column'
 									        },
 									        title: {
-									            text: 'Average fruit consumption during one week'
+									            text: 'PERCENTUAL DE REGISTROS POR UIDADE'
 									        },
-									        legend: {
-									            layout: 'vertical',
-									            align: 'left',
-									            verticalAlign: 'top',
-									            x: 150,
-									            y: 100,
-									            floating: true,
-									            borderWidth: 1,
-									            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+									        subtitle: {
+									            text: ''
 									        },
 									        xAxis: {
 									            categories: [
-									                'Monday',
-									                'Tuesday',
-									                'Wednesday',
-									                'Thursday',
-									                'Friday',
-									                'Saturday',
-									                'Sunday'
+													'Bio-Manguinhos',
+									                'CECAL',
+									                'CPqAM',
+									                'CPqRR',
+									                'CPqLMD',
+									                'DIRAC',
+									                'DIREH',
+									                'TI',
+									                'Todas as Unidades',
 									            ],
-									            plotBands: [{ // visualize the weekend
-									                from: 4.5,
-									                to: 6.5,
-									                color: 'rgba(68, 170, 213, .2)'
-									            }]
+									            crosshair: true
 									        },
 									        yAxis: {
+									            min: 0,
 									            title: {
-									                text: 'Fruit units'
+									                text: 'Quantidade de Registros'
 									            }
 									        },
 									        tooltip: {
+									            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+									            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+									                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+									            footerFormat: '</table>',
 									            shared: true,
-									            valueSuffix: ' units'
-									        },
-									        credits: {
-									            enabled: false
+									            useHTML: true
 									        },
 									        plotOptions: {
-									            areaspline: {
-									                fillOpacity: 0.5
+									            column: {
+									                pointPadding: 0.2,
+									                borderWidth: 0
 									            }
 									        },
 									        series: [{
-									            name: 'John',
-									            data: [3, 4, 3, 5, 4, 10, 12]
+									            name: '2012',
+									            data: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+	
 									        }, {
-									            name: 'Jane',
-									            data: [1, 3, 4, 3, 3, 5, 4]
+									            name: '2013',
+									            data: [6, 0, 0, 0, 0, 0, 0, 0, 0]
+	
+									        }, {
+									            name: '2014',
+									            data: [0, 0, 0, 0, 4, 0, 5, 1, 0]
+	
+									        }, {
+									            name: '2015',
+									            data: [0, 1, 1, 1, 0, 1, 0, 0, 2]
+	
 									        }]
 									    });
 									});
 							</script>
+							</form>
 							<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 							                    
 							</div>

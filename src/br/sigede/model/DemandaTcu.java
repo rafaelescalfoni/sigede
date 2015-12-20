@@ -1,7 +1,6 @@
 package br.sigede.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -38,14 +37,14 @@ public class DemandaTcu implements Serializable {
 	private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable=false, nullable=false)
     private Long id;
     @Column(name = "data_cadastro", updatable=false, nullable=false, length=20)
     private String data_cadastro;
     @Column(name = "tipodemanda", nullable=false, length=30)
     private String tipodemanda;
     @Column(name = "num_demanda", length=10)
-    private int num_demanda;
+    private String num_demanda;
     @Column(name = "ano", length=4)
     private String ano;
     @Column(name = "data_demanda", nullable=false, length=20)
@@ -61,7 +60,7 @@ public class DemandaTcu implements Serializable {
     @Column(name = "naturezatcu", nullable=false, length=20)
     private String naturezatcu;
     @Column(name = "num_acordao", length=10)
-    private int num_acordao;
+    private String num_acordao;
     @Column(name = "anoacordao", length=4)
     private String anoacordao;
     @Column(name = "colegiadoacordao", length=20)
@@ -69,13 +68,13 @@ public class DemandaTcu implements Serializable {
     @Column(name = "data_sessaoacordao", length=20)
     private String data_sessaoacordao;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id", updatable=false, nullable=false)
     private Usuario usuario;
     
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "demandatcu_id")
-	private List<RegistroDemandaTcu> registrodemandatcuList = new ArrayList<RegistroDemandaTcu>();
+	private List<RegistroDemandaTcu> registrodemandatcuList;
     
     
     public DemandaTcu() {
@@ -85,8 +84,8 @@ public class DemandaTcu implements Serializable {
         this.id = id;
     }
     
-    public DemandaTcu(Long id, String tipodemanda, int num_demanda, String ano, String data_demanda, String remetente, String processotcu, String interessado,
-    		String naturezatcu, int num_acordao, String anoacordao, String colegiadoacordao, String data_sessaoacordao) {
+    public DemandaTcu(Long id, String tipodemanda, String num_demanda, String ano, String data_demanda, String remetente, String processotcu, String interessado,
+    		String naturezatcu, String num_acordao, String anoacordao, String colegiadoacordao, String data_sessaoacordao) {
         this.id = id;
         this.tipodemanda = tipodemanda;
         this.num_demanda = num_demanda;
@@ -126,11 +125,11 @@ public class DemandaTcu implements Serializable {
 		this.tipodemanda = tipodemanda;
 	}
 
-	public int getNum_demanda() {
+	public String getNum_demanda() {
 		return num_demanda;
 	}
 
-	public void setNum_demanda(int num_demanda) {
+	public void setNum_demanda(String num_demanda) {
 		this.num_demanda = num_demanda;
 	}
 
@@ -190,11 +189,11 @@ public class DemandaTcu implements Serializable {
 		this.naturezatcu = naturezatcu;
 	}
 
-	public int getNum_acordao() {
+	public String getNum_acordao() {
 		return num_acordao;
 	}
 
-	public void setNum_acordao(int num_acordao) {
+	public void setNum_acordao(String num_acordao) {
 		this.num_acordao = num_acordao;
 	}
 

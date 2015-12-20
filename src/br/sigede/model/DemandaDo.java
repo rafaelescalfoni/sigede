@@ -1,7 +1,6 @@
 package br.sigede.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -37,14 +36,14 @@ public class DemandaDo implements Serializable {
 	private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", updatable=false, nullable=false)
     private Long id;
     @Column(name = "data_cadastro", updatable=false, nullable=false, length=20)
     private String data_cadastro;
     @Column(name = "tipodemandado", nullable=false, length=20)
     private String tipodemandado;
     @Column(name = "num_demanda", length=10)
-    private int num_demanda;
+    private String num_demanda;
     @Column(name = "ano", length=4)
     private String ano;
     @Column(name = "data_demanda", nullable=false, length=20)
@@ -59,20 +58,20 @@ public class DemandaDo implements Serializable {
     private String naturezado;
     @Column(name = "tiporelatoriodo", length=50)
     private String tiporelatoriodo;
-    @Column(name = "num_relatorio", length=10)
-    private int num_relatorio;
+    @Column(name = "num_relatorio", length=30)
+    private String num_relatorio;
     @Column(name = "data_relatorio", length=30)
     private String data_relatorio;
     @Column(name = "exerciciorelatorio", length=4)
     private String exerciciorelatorio;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id", updatable=false, nullable=false)
     private Usuario usuario;
     
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "demandado_id")
-	private List<RegistroDemandaDo> registrodemandadoList = new ArrayList<RegistroDemandaDo>();
+	private List<RegistroDemandaDo> registrodemandadoList;
     
     
     public DemandaDo() {
@@ -82,8 +81,8 @@ public class DemandaDo implements Serializable {
         this.id = id;
     }
     
-    public DemandaDo(Long id, String tipodemandado, int num_demanda, String ano, String data_demanda, String remetente, String interessado, 
-    		String naturezado, String tiporelatoriodo, int num_relatorio, String data_relatorio, String exerciciorelatorio) {
+    public DemandaDo(Long id, String tipodemandado, String num_demanda, String ano, String data_demanda, String remetente, String interessado, 
+    		String naturezado, String tiporelatoriodo, String num_relatorio, String data_relatorio, String exerciciorelatorio) {
         this.id = id;
         this.tipodemandado = tipodemandado;
         this.num_demanda = num_demanda;
@@ -122,11 +121,11 @@ public class DemandaDo implements Serializable {
 		this.tipodemandado = tipodemandado;
 	}
 
-	public int getNum_demanda() {
+	public String getNum_demanda() {
 		return num_demanda;
 	}
 
-	public void setNum_demanda(int num_demanda) {
+	public void setNum_demanda(String num_demanda) {
 		this.num_demanda = num_demanda;
 	}
 
@@ -186,11 +185,11 @@ public class DemandaDo implements Serializable {
 		this.tiporelatoriodo = tiporelatoriodo;
 	}
 
-	public int getNum_relatorio() {
+	public String getNum_relatorio() {
 		return num_relatorio;
 	}
 
-	public void setNum_relatorio(int num_relatorio) {
+	public void setNum_relatorio(String num_relatorio) {
 		this.num_relatorio = num_relatorio;
 	}
 
